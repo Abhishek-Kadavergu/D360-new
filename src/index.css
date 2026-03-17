@@ -101,6 +101,176 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(-1.5%, -1.5%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1.5%, 1.5%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-1.5%, -1.5%, 0) scale(1);
+  }
+}
+
+@keyframes premium-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.28), 0 0 36px rgba(0, 198, 255, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 26px rgba(0, 240, 255, 0.42), 0 0 52px rgba(0, 198, 255, 0.24);
+  }
+}
+
+@keyframes underline-sweep {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(300%);
+    opacity: 0;
+  }
+}
+
+@keyframes noise-pan {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-2%, 1%, 0);
+  }
+  100% {
+    transform: translate3d(2%, -1%, 0);
+  }
+}
+
+@keyframes neural-drift {
+  0% {
+    background-position: 0 0, 0 0;
+    opacity: 0.14;
+  }
+  50% {
+    background-position: 60px 30px, 40px 20px;
+    opacity: 0.24;
+  }
+  100% {
+    background-position: 0 0, 0 0;
+    opacity: 0.14;
+  }
+}
+
+@keyframes title-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes title-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambient-drift 16s ease-in-out infinite;
+}
+
+.animate-premium-pulse {
+  animation: premium-pulse 3.6s ease-in-out infinite;
+}
+
+.underline-sweep {
+  animation: underline-sweep 2.8s ease-in-out infinite;
+}
+
+.noise-overlay {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05), transparent 35%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.06) 0.6px, transparent 1px);
+  background-size: 160px 160px, 200px 200px, 3px 3px;
+  animation: noise-pan 10s steps(10, end) infinite;
+}
+
+.neural-lines {
+  background-image:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(0, 240, 255, 0.14) 50%,
+      transparent 100%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(99, 102, 241, 0.1) 50%,
+      transparent 100%
+    );
+  background-size: 280px 280px, 340px 340px;
+  animation: neural-drift 18s linear infinite;
+}
+
+.construct-title-float {
+  animation: title-float 7s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(0, 240, 255, 0.18));
+}
+
+.animate-title-breathe {
+  animation: title-breathe 4.6s ease-in-out infinite;
+}
+
+.scroll-line {
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ambient-drift,
+  .animate-premium-pulse,
+  .underline-sweep,
+  .noise-overlay,
+  .neural-lines,
+  .construct-title-float,
+  .animate-title-breathe,
+  .scroll-line {
+    animation: none !important;
+  }
+}
+
 /* Subtle gradient backgrounds */
 .gradient-hero {
   background: linear-gradient(180deg, hsl(217 91% 40% / 0.03) 0%, hsl(var(--background)) 100%);
