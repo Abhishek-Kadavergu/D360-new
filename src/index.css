@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Source+Code+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 20% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 14%;
+
+    --primary: 217 91% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 14%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 217 91% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 40%;
+
+    --radius: 0.5rem;
+
+    --font-heading: 'Alfa Slab One', serif;
+    --font-mono: 'Source Code Pro', monospace;
+    --font-body: 'Inter', sans-serif;
+
+    --molten: 217 91% 40%;
+    --concrete: 220 20% 14%;
+    --toolmark: 220 9% 46%;
+    --void: 0 0% 98%;
+
+    --d360-blue: 217 91% 40%;
+    --d360-blue-light: 217 85% 55%;
+    --pcg-green: 160 40% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Subtle gradient backgrounds */
+.gradient-hero {
+  background: linear-gradient(180deg, hsl(217 91% 40% / 0.03) 0%, hsl(var(--background)) 100%);
+}
+
+.gradient-section {
+  background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 14% 96%) 50%, hsl(var(--background)) 100%);
+}
