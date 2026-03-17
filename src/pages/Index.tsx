@@ -497,14 +497,14 @@ const Index = () => {
           {/* Hero banner — agent centered and fitted */}
           <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-20 pb-16">
             <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
-              {/* Agent: complete Layer 8 visual — centered, fitted */}
+              {/* Agent: complete Layer 8 visual — large, no outer box */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full h-[min(68vh,720px)] min-h-[380px] max-h-[720px] flex items-center justify-center"
+                className="w-full h-[min(85vh,960px)] min-h-[480px] max-h-[960px] flex items-center justify-center"
               >
-                <div className="w-full h-full max-w-5xl mx-auto">
+                <div className="w-full h-full max-w-6xl mx-auto">
                   <ArchitectureSVG progress={1} ignited={true} fitContain />
                 </div>
               </motion.div>

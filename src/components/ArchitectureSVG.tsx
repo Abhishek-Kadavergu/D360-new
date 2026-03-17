@@ -303,9 +303,12 @@ const ArchitectureSVG = ({ progress, ignited, fitContain = false }: Architecture
             <line x1={cx} y1={200} x2={out.x} y2={out.y + 22}
               stroke={blue} strokeWidth={ignited ? 2 : 1} opacity={0.35}
               strokeDasharray={ignited ? "none" : "5 3"} />
-            <circle cx={out.x} cy={out.y + 22} r={ignited ? 24 : 20} fill={blue} opacity={ignited ? 0.12 : 0.06}
-              stroke={cyan} strokeWidth={0.8} />
-            <text x={out.x} y={out.y + 17} textAnchor="middle" fontSize="20">{out.icon}</text>
+            {/* Soft glow only – no box; stroke is a faint ring so the icon sits in the flow */}
+            <circle cx={out.x} cy={out.y + 22} r={ignited ? 26 : 22} fill="none"
+              stroke={cyan} strokeWidth={0.6} opacity={ignited ? 0.35 : 0.2} />
+            <circle cx={out.x} cy={out.y + 22} r={ignited ? 28 : 24} fill="none"
+              stroke={cyan} strokeWidth={2} opacity={ignited ? 0.08 : 0.04} />
+            <text x={out.x} y={out.y + 17} textAnchor="middle" fontSize="20" opacity={0.95}>{out.icon}</text>
             <text x={out.x} y={out.y + 40} textAnchor="middle" fill={cyan} fontSize="7" fontFamily="monospace" fontWeight="600" opacity={0.8}>
               {out.label}
             </text>
@@ -404,8 +407,7 @@ const ArchitectureSVG = ({ progress, ignited, fitContain = false }: Architecture
         </radialGradient>
       </defs>
 
-      {/* Deep dark background */}
-      <rect width="1000" height="840" fill="#0a1628" />
+      {/* No solid background — diagram floats on page; no outer box shade */}
       
       {/* Core glow */}
       <ellipse cx={500} cy={460} rx={380} ry={320} fill="url(#core-glow)" />
