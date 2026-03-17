@@ -207,7 +207,7 @@ const Index = () => {
                   <div className="noise-overlay absolute inset-0 opacity-[0.12]" />
                 </div>
 
-                <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center sm:px-10">
+                <div className="relative z-10 mx-auto w-full max-w-4xl pt-14 px-6 text-center sm:px-10">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -309,146 +309,173 @@ const Index = () => {
                 <div className="noise-overlay absolute inset-0 opacity-[0.09]" />
               </div>
               <div className="absolute inset-0 flex flex-col md:flex-row">
-              {/* LEFT PANEL — Narrative Text */}
-              <div className="w-full md:w-[45%] h-full flex flex-col justify-center relative z-10 px-8 md:px-12 lg:px-16">
-                {/* Subtle left panel background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/95 via-[#071A2D]/90 to-[#071A2D]/75 md:to-transparent" />
-                <motion.div
-                  aria-hidden
-                  style={{ x: narrativeParallaxX, y: narrativeParallaxY }}
-                  className="absolute -left-16 top-1/3 h-52 w-52 rounded-full bg-cyan-400/10 blur-[90px]"
-                />
+                {/* LEFT PANEL — Narrative Text */}
+                <div className="w-full md:w-[45%] h-full flex flex-col justify-center relative z-10 px-8 md:px-12 lg:px-16">
+                  {/* Subtle left panel background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#050B18]/95 via-[#071A2D]/90 to-[#071A2D]/75 md:to-transparent" />
+                  <motion.div
+                    aria-hidden
+                    style={{ x: narrativeParallaxX, y: narrativeParallaxY }}
+                    className="absolute -left-16 top-1/3 h-52 w-52 rounded-full bg-cyan-400/10 blur-[90px]"
+                  />
 
-                <div className="relative z-10">
-                  {/* Hero intro (step -1) */}
-                  {currentStep === -1 && (
-                    <div>
-                      <motion.div
-                        initial={{ opacity: 0, letterSpacing: "0.72em", y: 8 }}
-                        animate={{ opacity: 1, letterSpacing: "0.5em", y: 0 }}
-                        transition={{ duration: 0.35, ease: "easeOut", delay: 0.15 }}
-                        className="mb-6 font-mono text-xs uppercase tracking-[0.5em] text-cyan-400/85"
-                      >
-                        CONSTRUCTING INTELLIGENCE
-                      </motion.div>
-                      <motion.div
-                        style={{ x: narrativeParallaxX, y: narrativeParallaxY }}
-                        className="relative mb-7"
-                      >
-                        <div className="pointer-events-none absolute -inset-x-2 -inset-y-4 -z-10 bg-cyan-400/10 blur-3xl animate-title-breathe" />
-                        <motion.h2
-                          initial={{ opacity: 0, x: -24 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.42, ease: "easeOut", delay: 0.32 }}
-                          className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                  <div className="relative z-10">
+                    {/* Hero intro (step -1) */}
+                    {currentStep === -1 && (
+                      <div>
+                        <motion.div
+                          initial={{
+                            opacity: 0,
+                            letterSpacing: "0.72em",
+                            y: 8,
+                          }}
+                          animate={{ opacity: 1, letterSpacing: "0.5em", y: 0 }}
+                          transition={{
+                            duration: 0.35,
+                            ease: "easeOut",
+                            delay: 0.15,
+                          }}
+                          className="mb-6 font-mono text-xs uppercase tracking-[0.5em] text-cyan-400/85"
                         >
-                          HOW WE
-                        </motion.h2>
-                        <motion.h2
-                          initial={{ opacity: 0, x: -24 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.42, ease: "easeOut", delay: 0.47 }}
-                          className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                          CONSTRUCTING INTELLIGENCE
+                        </motion.div>
+                        <motion.div
+                          style={{
+                            x: narrativeParallaxX,
+                            y: narrativeParallaxY,
+                          }}
+                          className="relative mb-7"
                         >
-                          BUILD
-                        </motion.h2>
-                        <motion.h2
-                          initial={{ opacity: 0, x: -24 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.42, ease: "easeOut", delay: 0.62 }}
-                          className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                          <div className="pointer-events-none absolute -inset-x-2 -inset-y-4 -z-10 bg-cyan-400/10 blur-3xl animate-title-breathe" />
+                          <motion.h2
+                            initial={{ opacity: 0, x: -24 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              duration: 0.42,
+                              ease: "easeOut",
+                              delay: 0.32,
+                            }}
+                            className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                          >
+                            HOW WE
+                          </motion.h2>
+                          <motion.h2
+                            initial={{ opacity: 0, x: -24 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              duration: 0.42,
+                              ease: "easeOut",
+                              delay: 0.47,
+                            }}
+                            className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                          >
+                            BUILD
+                          </motion.h2>
+                          <motion.h2
+                            initial={{ opacity: 0, x: -24 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              duration: 0.42,
+                              ease: "easeOut",
+                              delay: 0.62,
+                            }}
+                            className="construct-title-float bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-500 bg-clip-text text-6xl font-extrabold leading-[0.9] tracking-tight text-transparent md:text-7xl lg:text-8xl"
+                          >
+                            D360 AI
+                          </motion.h2>
+                        </motion.div>
+                        <motion.p
+                          initial={{ opacity: 0, y: 14 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.45, delay: 0.75 }}
+                          className="mb-10 max-w-xl text-gray-400 text-lg md:text-xl leading-relaxed"
                         >
-                          D360 AI
-                        </motion.h2>
-                      </motion.div>
-                      <motion.p
-                        initial={{ opacity: 0, y: 14 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.45, delay: 0.75 }}
-                        className="mb-10 max-w-xl text-gray-400 text-lg md:text-xl leading-relaxed"
-                      >
-                        Watch a multimodal intelligence architecture assemble in
-                        real time, layer by layer, as each system node comes
-                        online.
-                      </motion.p>
-                      <motion.button
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: 0.95 }}
-                        className="group flex items-center gap-4 text-cyan-300/90"
-                        onClick={() => handleWheel(new WheelEvent("wheel", { deltaY: 120 }))}
-                      >
-                        <span className="relative h-14 w-[1px] overflow-hidden rounded-full bg-cyan-300/25">
-                          <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-cyan-200 via-cyan-400 to-transparent" />
-                        </span>
-                        <span className="relative font-mono text-xs tracking-[0.35em]">
-                          <span className="inline-block border-b border-cyan-300/40 pb-1 transition-colors duration-300 group-hover:border-cyan-200">
-                            SCROLL TO BEGIN
+                          Watch a multimodal intelligence architecture assemble
+                          in real time, layer by layer, as each system node
+                          comes online.
+                        </motion.p>
+                        <motion.button
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.35, delay: 0.95 }}
+                          className="group flex items-center gap-4 text-cyan-300/90"
+                          onClick={() =>
+                            handleWheel(
+                              new WheelEvent("wheel", { deltaY: 120 }),
+                            )
+                          }
+                        >
+                          <span className="relative h-14 w-[1px] overflow-hidden rounded-full bg-cyan-300/25">
+                            <span className="scroll-line absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-cyan-200 via-cyan-400 to-transparent" />
                           </span>
-                          <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-y-1">
-                            ↓
+                          <span className="relative font-mono text-xs tracking-[0.35em]">
+                            <span className="inline-block border-b border-cyan-300/40 pb-1 transition-colors duration-300 group-hover:border-cyan-200">
+                              SCROLL TO BEGIN
+                            </span>
+                            <span className="ml-2 inline-block transition-transform duration-300 group-hover:translate-y-1">
+                              ↓
+                            </span>
                           </span>
-                        </span>
-                      </motion.button>
-                    </div>
-                  )}
+                        </motion.button>
+                      </div>
+                    )}
 
-                  {/* Narrative steps */}
+                    {/* Narrative steps */}
+                    {currentStep >= 0 && (
+                      <div className="relative">
+                        {NARRATIVE_STEPS.map((_, i) => (
+                          <NarrativeSection
+                            key={i}
+                            step={i}
+                            currentStep={currentStep}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Progress bar at bottom of left panel */}
+                  <div className="absolute bottom-8 left-8 md:left-12 lg:left-16 z-20 flex items-center gap-2">
+                    {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`h-1 rounded-full transition-all duration-500 ${
+                          i <= currentStep
+                            ? "bg-cyan-400 w-6"
+                            : "bg-blue-800/50 w-2"
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Step counter */}
                   {currentStep >= 0 && (
-                    <div className="relative">
-                      {NARRATIVE_STEPS.map((_, i) => (
-                        <NarrativeSection
-                          key={i}
-                          step={i}
-                          currentStep={currentStep}
-                        />
-                      ))}
+                    <div className="absolute top-8 left-8 md:left-12 lg:left-16 z-20 font-mono text-[10px] text-blue-300/40 tracking-widest">
+                      LAYER {currentStep + 1} / {TOTAL_STEPS}
                     </div>
                   )}
                 </div>
 
-                {/* Progress bar at bottom of left panel */}
-                <div className="absolute bottom-8 left-8 md:left-12 lg:left-16 z-20 flex items-center gap-2">
-                  {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`h-1 rounded-full transition-all duration-500 ${
-                        i <= currentStep
-                          ? "bg-cyan-400 w-6"
-                          : "bg-blue-800/50 w-2"
-                      }`}
-                    />
-                  ))}
-                </div>
+                {/* RIGHT PANEL — Transformer SVG */}
+                <div className="w-full md:w-[55%] h-full relative">
+                  {/* Subtle edge glow */}
+                  <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#071A2D]/90 to-transparent z-10 hidden md:block" />
+                  <motion.div
+                    aria-hidden
+                    style={{ x: narrativeParallaxX, y: narrativeParallaxY }}
+                    className="absolute right-10 top-24 h-48 w-48 rounded-full bg-indigo-500/10 blur-[95px]"
+                  />
 
-                {/* Step counter */}
-                {currentStep >= 0 && (
-                  <div className="absolute top-8 left-8 md:left-12 lg:left-16 z-20 font-mono text-[10px] text-blue-300/40 tracking-widest">
-                    LAYER {currentStep + 1} / {TOTAL_STEPS}
-                  </div>
-                )}
-              </div>
-
-              {/* RIGHT PANEL — Transformer SVG */}
-              <div className="w-full md:w-[55%] h-full relative">
-                {/* Subtle edge glow */}
-                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#071A2D]/90 to-transparent z-10 hidden md:block" />
-                <motion.div
-                  aria-hidden
-                  style={{ x: narrativeParallaxX, y: narrativeParallaxY }}
-                  className="absolute right-10 top-24 h-48 w-48 rounded-full bg-indigo-500/10 blur-[95px]"
-                />
-
-                <div className="w-full h-full flex items-center justify-center p-0 md:p-2">
-                  <div className="w-full h-full">
-                    <ArchitectureSVG
-                      progress={architectureProgress}
-                      ignited={ignited}
-                    />
+                  <div className="w-full h-full flex items-center justify-center p-0 md:p-2">
+                    <div className="w-full h-full">
+                      <ArchitectureSVG
+                        progress={architectureProgress}
+                        ignited={ignited}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           )}
 
