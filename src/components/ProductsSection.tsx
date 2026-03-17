@@ -146,10 +146,10 @@ const ProductsSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Ecosystem: central core + orbit nodes */}
+        {/* Ecosystem: central core + orbit nodes (nudged left to optically center with right scroll line) */}
         <motion.div
           ref={ecosystemRef}
-          className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center"
+          className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -translate-x-[4%]"
           initial={{ opacity: 0 }}
           animate={ecosystemInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
@@ -242,9 +242,15 @@ const ProductsSection = () => {
                   </div>
                   {isActive && (
                     <motion.div
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-64 rounded-xl border border-cyan-400/25 bg-[#071A2D]/95 backdrop-blur-md p-4 text-left shadow-[0_0_30px_rgba(0,240,255,0.15)]"
+                      initial={{ opacity: 0, x: node.id === "workflow" ? -8 : 8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      className={`absolute w-64 rounded-xl border border-cyan-400/25 bg-[#071A2D]/95 backdrop-blur-md p-4 text-left shadow-[0_0_30px_rgba(0,240,255,0.15)] ${
+                        node.id === "workflow"
+                          ? "left-full ml-3 top-1/2 -translate-y-1/2"
+                          : node.id === "agents"
+                            ? "right-full mr-3 top-[calc(50%-2rem)] -translate-y-1/2"
+                            : "right-full mr-3 top-1/2 -translate-y-1/2"
+                      }`}
                       style={{ zIndex: 30 }}
                     >
                       <div className="font-mono text-[9px] text-cyan-400/80 tracking-widest mb-2">

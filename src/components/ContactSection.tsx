@@ -22,7 +22,7 @@ const ContactSection = () => {
             Deploy D360 AI
           </p>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 mb-4">
-            Initiate Deployment
+            GET STARTED
           </h2>
           <p className="text-gray-400 text-sm md:text-base leading-relaxed">
             Tell us about your challenge. We'll respond with architecture, timeline, and a clear path to D360 AI deployment.
