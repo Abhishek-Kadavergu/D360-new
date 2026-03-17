@@ -20,6 +20,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ProductsSection from "@/components/ProductsSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
+import ScrollProgressLine from "@/components/ScrollProgressLine";
 import { soundEngine } from "@/lib/soundEngine";
 import piazzaLogo from "@/assets/piazza-logo-bg.png";
 import d360Logo from "@/assets/d360-logo-bg.png";
@@ -462,6 +463,7 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
+          className="min-h-screen bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D]"
         >
           {/* Sticky nav */}
           <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1628]/95 backdrop-blur-sm border-b border-blue-900/30">
@@ -493,7 +495,7 @@ const Index = () => {
           </nav>
 
           {/* Hero banner — agent centered and fitted */}
-          <section className="min-h-screen bg-[#0a1628] flex flex-col items-center justify-center relative overflow-hidden pt-20 pb-16">
+          <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-20 pb-16">
             <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
               {/* Agent: complete Layer 8 visual — centered, fitted */}
               <motion.div
@@ -536,10 +538,16 @@ const Index = () => {
             </div>
           </section>
 
-          <ProductsSection />
-          <ServicesSection />
-          <TeamSection />
-          <ContactSection />
+          {/* Global dark background + scroll line for all sections below hero */}
+          <div className="relative landing-sections-bg">
+            <div className="landing-mesh" aria-hidden />
+            <div className="landing-grain" aria-hidden />
+            <ScrollProgressLine />
+            <ProductsSection />
+            <ServicesSection />
+            <TeamSection />
+            <ContactSection />
+          </div>
         </motion.div>
       )}
     </div>

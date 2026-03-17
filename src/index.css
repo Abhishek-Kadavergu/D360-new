@@ -407,3 +407,101 @@ html {
 .gradient-section {
   background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 14% 96%) 50%, hsl(var(--background)) 100%);
 }
+
+/* ========== LANDING SECTIONS (futuristic AI universe) ========== */
+.landing-sections-bg {
+  background: linear-gradient(180deg, #050b18 0%, #071a2d 35%, #071a2d 70%, #02050d 100%);
+}
+
+.landing-sections-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(0, 198, 255, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.landing-sections-bg .landing-mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(120deg, transparent 0%, rgba(0, 240, 255, 0.03) 50%, transparent 100%),
+    linear-gradient(45deg, transparent 0%, rgba(0, 198, 255, 0.02) 50%, transparent 100%);
+  background-size: 400px 400px, 300px 300px;
+  animation: mesh-drift 25s linear infinite;
+  pointer-events: none;
+}
+
+.landing-sections-bg .landing-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+@keyframes mesh-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 400px 0, 300px 300px; }
+}
+
+@keyframes section-title-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.section-title-gradient {
+  animation: section-title-gradient 8s ease-in-out infinite;
+}
+
+@keyframes text-sweep {
+  0% { transform: translateX(-100%); opacity: 0; }
+  15% { opacity: 0.6; }
+  85% { opacity: 0.5; }
+  100% { transform: translateX(400%); opacity: 0; }
+}
+
+@keyframes node-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 240, 255, 0.35); opacity: 0.9; }
+  50% { box-shadow: 0 0 28px rgba(0, 240, 255, 0.55); opacity: 1; }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.25); box-shadow: 0 0 20px rgba(0, 240, 255, 0.1); }
+  50% { border-color: rgba(0, 240, 255, 0.45); box-shadow: 0 0 32px rgba(0, 240, 255, 0.2); }
+}
+
+.section-text-sweep {
+  animation: text-sweep 8s ease-in-out infinite;
+}
+
+.ecosystem-node-pulse {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+.float-soft {
+  animation: float-soft 5s ease-in-out infinite;
+}
+
+.glow-border-breathe {
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-sections-bg .landing-mesh,
+  .section-text-sweep,
+  .ecosystem-node-pulse,
+  .float-soft,
+  .glow-border-breathe,
+  .section-title-gradient {
+    animation: none !important;
+  }
+}
