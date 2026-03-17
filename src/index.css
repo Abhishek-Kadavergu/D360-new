@@ -206,6 +206,88 @@ html {
   }
 }
 
+@keyframes activation-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.04);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes particles-rise {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 -220px, 60px -180px, -40px -240px;
+  }
+}
+
+@keyframes energy-rise {
+  0% {
+    transform: translateY(30%) scaleY(0.9);
+    opacity: 0;
+  }
+  28% {
+    opacity: 0.38;
+  }
+  100% {
+    transform: translateY(-85%) scaleY(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px 3px rgba(52, 211, 153, 0.25);
+  }
+}
+
+@keyframes d360-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes logo-shine {
+  0% {
+    transform: translateX(-170%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(560%);
+    opacity: 0;
+  }
+}
+
+@keyframes card-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.09);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+  }
+}
+
 .animate-ambient-drift {
   animation: ambient-drift 16s ease-in-out infinite;
 }
@@ -258,6 +340,45 @@ html {
   animation: scroll-line 1.8s ease-in-out infinite;
 }
 
+.activation-radial-spin {
+  animation: activation-spin 22s linear infinite;
+}
+
+.activation-particles {
+  background-image:
+    radial-gradient(circle, rgba(0, 240, 255, 0.16) 0.8px, transparent 1px),
+    radial-gradient(circle, rgba(0, 198, 255, 0.14) 0.9px, transparent 1px),
+    radial-gradient(circle, rgba(148, 163, 184, 0.12) 0.7px, transparent 1px);
+  background-size: 120px 120px, 160px 160px, 200px 200px;
+  animation: particles-rise 18s linear infinite;
+}
+
+.energy-wave-rise {
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(0, 240, 255, 0.2) 0%,
+    rgba(0, 198, 255, 0.08) 35%,
+    transparent 68%
+  );
+  animation: energy-rise 3.2s ease-out infinite;
+}
+
+.status-dot-pulse {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+.d360-logo-float {
+  animation: d360-float 7s ease-in-out infinite;
+}
+
+.d360-shine-sweep {
+  animation: logo-shine 6s ease-in-out infinite;
+}
+
+.piazza-card-breathe {
+  animation: card-breathe 4.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-ambient-drift,
   .animate-premium-pulse,
@@ -266,7 +387,14 @@ html {
   .neural-lines,
   .construct-title-float,
   .animate-title-breathe,
-  .scroll-line {
+  .scroll-line,
+  .activation-radial-spin,
+  .activation-particles,
+  .energy-wave-rise,
+  .status-dot-pulse,
+  .d360-logo-float,
+  .d360-shine-sweep,
+  .piazza-card-breathe {
     animation: none !important;
   }
 }
