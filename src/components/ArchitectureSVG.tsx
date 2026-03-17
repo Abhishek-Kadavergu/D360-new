@@ -3,9 +3,11 @@ import { useMemo } from "react";
 interface ArchitectureSVGProps {
   progress: number;
   ignited: boolean;
+  /** When true, scale to fit entire diagram in container (meet); when false, fill and crop (slice). */
+  fitContain?: boolean;
 }
 
-const ArchitectureSVG = ({ progress, ignited }: ArchitectureSVGProps) => {
+const ArchitectureSVG = ({ progress, ignited, fitContain = false }: ArchitectureSVGProps) => {
   const p = Math.min(progress, 1);
 
   const elements = useMemo(() => {
@@ -390,7 +392,11 @@ const ArchitectureSVG = ({ progress, ignited }: ArchitectureSVGProps) => {
   }, [p, ignited]);
 
   return (
-    <svg viewBox="50 20 900 810" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
+    <svg
+      viewBox="50 20 900 810"
+      className="w-full h-full"
+      preserveAspectRatio={fitContain ? "xMidYMid meet" : "xMidYMid slice"}
+    >
       <defs>
         <radialGradient id="core-glow" cx="50%" cy="55%" r="45%">
           <stop offset="0%" stopColor="#1a65c7" stopOpacity={ignited ? 0.15 : 0.05} />

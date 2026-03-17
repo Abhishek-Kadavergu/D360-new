@@ -492,41 +492,42 @@ const Index = () => {
             </div>
           </nav>
 
-          {/* Hero banner */}
-          <section className="min-h-screen bg-[#0a1628] flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 opacity-60">
-              <ArchitectureSVG progress={1} ignited={true} />
-            </div>
-            <div className="relative z-10 text-center px-8">
+          {/* Hero banner — agent centered and fitted */}
+          <section className="min-h-screen bg-[#0a1628] flex flex-col items-center justify-center relative overflow-hidden pt-20 pb-16">
+            <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
+              {/* Agent: complete Layer 8 visual — centered, fitted */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full h-[min(68vh,720px)] min-h-[380px] max-h-[720px] flex items-center justify-center"
               >
-                <div className="mb-6 flex justify-center">
-                  <img
-                    src={piazzaLogo}
-                    alt="Piazza Consulting Group"
-                    className="h-16 md:h-20 rounded-xl shadow-xl"
-                  />
+                <div className="w-full h-full max-w-5xl mx-auto">
+                  <ArchitectureSVG progress={1} ignited={true} fitContain />
                 </div>
-                {/* <div className="mb-6 flex justify-center">
-                  <img src={d360Logo} alt="DOCS360 AI" className="h-14 md:h-20 lg:h-24" />
-                </div> */}
-                <div className="font-mono text-sm text-cyan-400/70 tracking-[0.4em] mb-8">
+              </motion.div>
+
+              {/* Supporting copy below agent */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative z-10 text-center mt-8 md:mt-10 w-full max-w-2xl"
+              >
+                <div className="font-mono text-xs md:text-sm text-cyan-400/80 tracking-[0.35em] mb-4">
                   MULTIMODAL INTELLIGENCE ENGINE
                 </div>
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6">
                   {["DOCUMENTS", "VOICE", "AGENTS", "WORKFLOWS"].map((cap) => (
                     <span
                       key={cap}
-                      className="font-mono text-[10px] tracking-widest text-cyan-300 border border-cyan-400/30 rounded-full px-5 py-2"
+                      className="font-mono text-[10px] tracking-widest text-cyan-300/90 border border-cyan-400/30 rounded-full px-4 py-1.5"
                     >
                       {cap}
                     </span>
                   ))}
                 </div>
-                <p className="font-body text-base text-blue-200/60 max-w-[520px] mx-auto leading-relaxed">
+                <p className="font-body text-sm md:text-base text-blue-200/70 max-w-[520px] mx-auto leading-relaxed">
                   One AI that reads every document, processes every voice,
                   deploys autonomous agents, and orchestrates intelligent
                   workflows. Built by Piazza Consulting Group.
