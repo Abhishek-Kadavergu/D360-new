@@ -64,10 +64,10 @@ function Stat({ value, label, inView }: { value: string; label: string; inView: 
   const display = useCountUp(value, inView && numeric, 1000);
   return (
     <div className="text-center">
-      <div className="font-mono text-lg md:text-xl font-bold text-cyan-300 tabular-nums">
+      <div className="font-mono text-lg md:text-xl font-bold text-cyan-700 tabular-nums">
         {numeric ? display : value}
       </div>
-      <div className="font-mono text-[9px] tracking-widest text-cyan-400/60">{label}</div>
+      <div className="font-mono text-[9px] tracking-widest text-cyan-600/80">{label}</div>
     </div>
   );
 }
@@ -109,7 +109,7 @@ const ProductsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={introInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="font-mono text-[10px] md:text-xs tracking-[0.45em] text-cyan-400/70 mb-6 uppercase"
+            className="font-mono text-[10px] md:text-xs tracking-[0.45em] text-cyan-700 mb-6 uppercase"
           >
             The D360 AI Ecosystem
           </motion.p>
@@ -119,7 +119,7 @@ const ProductsSection = () => {
               animate={introInView ? { opacity: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ x: useTransform(x, (v: number) => v * 8), y: useTransform(y, (v: number) => v * 8) }}
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 bg-[length:200%_auto] section-title-gradient float-soft"
+              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-[length:200%_auto] section-title-gradient float-soft"
             >
               ONE AI.
             </motion.h2>
@@ -128,19 +128,19 @@ const ProductsSection = () => {
               animate={introInView ? { opacity: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.6, delay: 0.25 }}
               style={{ x: useTransform(x, (v: number) => v * 6), y: useTransform(y, (v: number) => v * 6) }}
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 bg-[length:200%_auto] section-title-gradient float-soft mt-1"
+              className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-[length:200%_auto] section-title-gradient float-soft mt-1"
             >
               EVERY CAPABILITY.
             </motion.h2>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="section-text-sweep absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-cyan-200/20 to-transparent" />
+              <div className="section-text-sweep absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent" />
             </div>
           </div>
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={introInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.45 }}
-            className="mt-6 text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed"
+            className="mt-6 text-slate-600 text-base md:text-lg max-w-xl mx-auto leading-relaxed"
           >
             One unified intelligence engine. Every capability reinforces every other.
           </motion.p>
@@ -163,9 +163,9 @@ const ProductsSection = () => {
           >
             <defs>
               <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(0,240,255,0.15)" />
-                <stop offset="50%" stopColor="rgba(0,240,255,0.4)" />
-                <stop offset="100%" stopColor="rgba(0,240,255,0.15)" />
+                <stop offset="0%" stopColor="rgba(8,145,178,0.2)" />
+                <stop offset="50%" stopColor="rgba(8,145,178,0.45)" />
+                <stop offset="100%" stopColor="rgba(8,145,178,0.2)" />
               </linearGradient>
             </defs>
             {ECOSYSTEM_NODES.map((node) => {
@@ -195,8 +195,8 @@ const ProductsSection = () => {
             animate={ecosystemInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-cyan-400/10 border border-cyan-400/40 flex items-center justify-center ecosystem-node-pulse shadow-[0_0_40px_rgba(0,240,255,0.2)]">
-              <span className="font-mono text-[10px] md:text-xs font-bold text-cyan-300 tracking-widest text-center leading-tight">
+            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-cyan-100/80 border border-cyan-500/40 flex items-center justify-center ecosystem-node-pulse shadow-[0_0_28px_rgba(8,145,178,0.2)]">
+              <span className="font-mono text-[10px] md:text-xs font-bold text-cyan-800 tracking-widest text-center leading-tight">
                 D360<br />CORE
               </span>
             </div>
@@ -223,7 +223,7 @@ const ProductsSection = () => {
               >
                 <motion.button
                   type="button"
-                  className="group flex flex-col items-center gap-1 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="group flex flex-col items-center gap-1 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600"
                   onMouseEnter={() => setActiveId(node.id)}
                   onMouseLeave={() => setActiveId(null)}
                   animate={{ scale: isActive ? 1.12 : 1 }}
@@ -232,11 +232,11 @@ const ProductsSection = () => {
                   <div
                     className={`w-16 h-16 md:w-20 md:h-20 rounded-full border flex items-center justify-center transition-all duration-300 ${
                       isActive
-                        ? "border-cyan-400/70 bg-cyan-400/20 shadow-[0_0_32px_rgba(0,240,255,0.4)]"
-                        : "border-cyan-400/30 bg-cyan-400/5 hover:border-cyan-400/50 hover:bg-cyan-400/10"
+                        ? "border-cyan-600 bg-cyan-100 shadow-[0_0_24px_rgba(8,145,178,0.35)]"
+                        : "border-cyan-500/40 bg-white/90 hover:border-cyan-600 hover:bg-cyan-50"
                     }`}
                   >
-                    <span className="font-mono text-[9px] md:text-[10px] font-bold text-cyan-300 tracking-wider">
+                    <span className="font-mono text-[9px] md:text-[10px] font-bold text-cyan-800 tracking-wider">
                       {node.name.toUpperCase()}
                     </span>
                   </div>
@@ -244,7 +244,7 @@ const ProductsSection = () => {
                     <motion.div
                       initial={{ opacity: 0, x: node.id === "workflow" ? -8 : 8 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className={`absolute w-64 rounded-xl border border-cyan-400/25 bg-[#071A2D]/95 backdrop-blur-md p-4 text-left shadow-[0_0_30px_rgba(0,240,255,0.15)] ${
+                      className={`absolute w-64 rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-200/50 backdrop-blur-sm p-4 text-left ring-1 ring-cyan-500/10 ${
                         node.id === "workflow"
                           ? "left-full ml-3 top-1/2 -translate-y-1/2"
                           : node.id === "agents"
@@ -253,10 +253,10 @@ const ProductsSection = () => {
                       }`}
                       style={{ zIndex: 30 }}
                     >
-                      <div className="font-mono text-[9px] text-cyan-400/80 tracking-widest mb-2">
+                      <div className="font-mono text-[9px] text-cyan-700 tracking-widest mb-2">
                         {node.tag}
                       </div>
-                      <p className="text-gray-400 text-xs leading-relaxed mb-3">
+                      <p className="text-slate-600 text-xs leading-relaxed mb-3">
                         {node.description}
                       </p>
                       <div className="flex gap-4 justify-between">

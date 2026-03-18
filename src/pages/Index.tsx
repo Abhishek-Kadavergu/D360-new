@@ -188,7 +188,7 @@ const Index = () => {
                 className="absolute inset-0 z-30 overflow-hidden bg-gradient-to-br from-[#060B1A] via-[#081426] to-black"
               >
                 <div className="absolute inset-0">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,240,255,0.14),transparent_60%)] animate-ambient-drift" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(0,240,255,0.14),transparent_60%)]" />
                   <motion.div
                     aria-hidden
                     style={{ x: parallaxX, y: parallaxY }}
@@ -491,9 +491,9 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="min-h-screen bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D]"
+          className="min-h-screen"
         >
-          {/* Sticky nav */}
+          {/* Sticky nav — dark over hero */}
           <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1628]/95 backdrop-blur-sm border-b border-blue-900/30">
             <div className="max-w-[1100px] mx-auto px-8 py-4 flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -522,10 +522,9 @@ const Index = () => {
             </div>
           </nav>
 
-          {/* Hero banner — agent centered and fitted */}
-          <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden pt-20 pb-16">
+          {/* Hero — dark area: agent only */}
+          <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D] pt-20 pb-8">
             <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
-              {/* Agent: complete Layer 8 visual — large, no outer box */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -536,41 +535,42 @@ const Index = () => {
                   <ArchitectureSVG progress={1} ignited={true} fitContain />
                 </div>
               </motion.div>
+            </div>
+          </section>
 
-              {/* Supporting copy below agent */}
+          {/* Light theme: everything below the agent */}
+          <div className="relative landing-sections-light text-slate-800">
+            <div className="landing-mesh-light" aria-hidden />
+            <div className="landing-grain-light" aria-hidden />
+            <ScrollProgressLine light />
+
+            <div className="relative z-10 max-w-2xl mx-auto px-6 pt-12 pb-8 text-center border-t border-slate-200/80 bg-gradient-to-b from-slate-50 to-white">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative z-10 text-center mt-8 md:mt-10 w-full max-w-2xl"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
               >
-                <div className="font-mono text-xs md:text-sm text-cyan-400/80 tracking-[0.35em] mb-4">
+                <div className="font-mono text-xs md:text-sm text-cyan-700 tracking-[0.35em] mb-4">
                   MULTIMODAL INTELLIGENCE ENGINE
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6">
                   {["DOCUMENTS", "VOICE", "AGENTS", "WORKFLOWS"].map((cap) => (
                     <span
                       key={cap}
-                      className="font-mono text-[10px] tracking-widest text-cyan-300/90 border border-cyan-400/30 rounded-full px-4 py-1.5"
+                      className="font-mono text-[10px] tracking-widest text-cyan-800 border border-cyan-600/30 bg-cyan-50/80 rounded-full px-4 py-1.5"
                     >
                       {cap}
                     </span>
                   ))}
                 </div>
-                <p className="font-body text-sm md:text-base text-blue-200/70 max-w-[520px] mx-auto leading-relaxed">
+                <p className="font-body text-sm md:text-base text-slate-600 max-w-[520px] mx-auto leading-relaxed">
                   One AI that reads every document, processes every voice,
                   deploys autonomous agents, and orchestrates intelligent
                   workflows. Built by Piazza Consulting Group.
                 </p>
               </motion.div>
             </div>
-          </section>
-
-          {/* Global dark background + scroll line for all sections below hero */}
-          <div className="relative landing-sections-bg">
-            <div className="landing-mesh" aria-hidden />
-            <div className="landing-grain" aria-hidden />
-            <ScrollProgressLine />
             <ProductsSection />
             <ServicesSection />
             <TeamSection />

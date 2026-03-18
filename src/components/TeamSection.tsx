@@ -50,13 +50,13 @@ const TeamSection = () => {
           transition={{ duration: 0.5 }}
           className="mb-16 md:mb-20"
         >
-          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-cyan-400/70 mb-3 uppercase">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-cyan-700 mb-3 uppercase">
             The Builders
           </p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 mb-4">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700 mb-4">
             Team
           </h2>
-          <p className="text-gray-400 text-sm md:text-base max-w-xl leading-relaxed">
+          <p className="text-slate-600 text-sm md:text-base max-w-xl leading-relaxed">
             Engineers, researchers, and strategists who've shipped AI at the world's most demanding scale.
           </p>
         </motion.div>
@@ -73,33 +73,31 @@ const TeamSection = () => {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group relative"
             >
-              <div className="relative rounded-2xl border border-cyan-400/20 bg-white/[0.03] backdrop-blur-md p-6 md:p-8 transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(0,240,255,0.12)] hover:-translate-y-1">
-                {/* Subtle neural pattern behind on hover */}
+              <div className="relative rounded-2xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-100/50 hover:-translate-y-1">
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,240,255,0.06),transparent_60%)]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(6,182,212,0.08),transparent_60%)]" />
                 </div>
 
                 <div className="relative">
-                  {/* Circular glowing avatar */}
                   <div className="mb-5 flex justify-center md:justify-start">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-cyan-400/40 bg-cyan-400/10 flex items-center justify-center ecosystem-node-pulse group-hover:border-cyan-400/70 group-hover:shadow-[0_0_24px_rgba(0,240,255,0.3)] transition-all duration-300">
-                      <span className="font-mono text-lg font-bold text-cyan-300">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-cyan-500/40 bg-cyan-50 flex items-center justify-center ecosystem-node-pulse group-hover:border-cyan-600 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.25)] transition-all duration-300">
+                      <span className="font-mono text-lg font-bold text-cyan-800">
                         {member.name
                           .split(" ")
                           .map((n) => n[0])
                           .join("")}
                       </span>
-                      <span className="absolute inset-[-2px] rounded-full border border-cyan-400/30 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+                      <span className="absolute inset-[-2px] rounded-full border border-cyan-400/40 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
                     </div>
                   </div>
 
-                  <h3 className="font-heading text-lg text-white mb-1 group-hover:text-cyan-100 transition-colors">
+                  <h3 className="font-heading text-lg text-slate-900 mb-1 group-hover:text-cyan-900 transition-colors">
                     {member.name}
                   </h3>
-                  <p className="font-mono text-[10px] text-cyan-400/80 tracking-widest mb-3 group-hover:text-cyan-400 transition-colors">
+                  <p className="font-mono text-[10px] text-cyan-700 tracking-widest mb-3">
                     {member.role}
                   </p>
-                  <p className="text-gray-400 text-xs md:text-sm leading-relaxed">
+                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
