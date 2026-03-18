@@ -1,5 +1,11 @@
-import { motion, useMotionValue, useSpring, useTransform, useInView } from "framer-motion";
-import { useCallback, useRef, useState, type MouseEvent } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useInView,
+} from "framer-motion";
+import { useCallback, useRef, type MouseEvent } from "react";
 import { useCountUp } from "@/hooks/useCountUp";
 
 const ECOSYSTEM_NODES = [
@@ -14,7 +20,6 @@ const ECOSYSTEM_NODES = [
       { value: "<100ms", label: "PER PAGE" },
       { value: "200+", label: "FILE TYPES" },
     ],
-    angle: 0,
   },
   {
     id: "voice",
@@ -27,7 +32,6 @@ const ECOSYSTEM_NODES = [
       { value: "40+", label: "LANGUAGES" },
       { value: "97.8%", label: "WER" },
     ],
-    angle: 90,
   },
   {
     id: "agents",
@@ -40,7 +44,6 @@ const ECOSYSTEM_NODES = [
       { value: "85%", label: "AUTOMATION" },
       { value: "∞", label: "SCALABILITY" },
     ],
-    angle: 180,
   },
   {
     id: "workflow",
@@ -53,13 +56,18 @@ const ECOSYSTEM_NODES = [
       { value: "100+", label: "CONNECTORS" },
       { value: "0", label: "CODE" },
     ],
-    angle: 270,
   },
 ];
 
-const RAD = Math.PI / 180;
-
-function Stat({ value, label, inView }: { value: string; label: string; inView: boolean }) {
+function Stat({
+  value,
+  label,
+  inView,
+}: {
+  value: string;
+  label: string;
+  inView: boolean;
+}) {
   const numeric = /^[<\d.]+\d*$/.test(value.replace(/[%+ms]/g, ""));
   const display = useCountUp(value, inView && numeric, 1000);
   return (
@@ -67,13 +75,14 @@ function Stat({ value, label, inView }: { value: string; label: string; inView: 
       <div className="font-mono text-lg md:text-xl font-bold text-cyan-700 tabular-nums">
         {numeric ? display : value}
       </div>
-      <div className="font-mono text-[9px] tracking-widest text-cyan-600/80">{label}</div>
+      <div className="font-mono text-[9px] tracking-widest text-cyan-600/80">
+        {label}
+      </div>
     </div>
   );
 }
 
 const ProductsSection = () => {
-  const [activeId, setActiveId] = useState<string | null>(null);
   const introRef = useRef<HTMLDivElement>(null);
   const ecosystemRef = useRef<HTMLDivElement>(null);
   const introInView = useInView(introRef, { amount: 0.3, once: true });
@@ -90,7 +99,7 @@ const ProductsSection = () => {
       mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
       mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
     },
-    [mouseX, mouseY]
+    [mouseX, mouseY],
   );
 
   return (
@@ -101,10 +110,7 @@ const ProductsSection = () => {
     >
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Cinematic intro: ONE AI. EVERY CAPABILITY. */}
-        <motion.div
-          ref={introRef}
-          className="mb-24 md:mb-32 text-center"
-        >
+        <motion.div ref={introRef} className="mb-24 md:mb-32 text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={introInView ? { opacity: 1, y: 0 } : {}}
@@ -118,7 +124,10 @@ const ProductsSection = () => {
               initial={{ opacity: 0, filter: "blur(8px)" }}
               animate={introInView ? { opacity: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ x: useTransform(x, (v: number) => v * 8), y: useTransform(y, (v: number) => v * 8) }}
+              style={{
+                x: useTransform(x, (v: number) => v * 8),
+                y: useTransform(y, (v: number) => v * 8),
+              }}
               className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-[length:200%_auto] section-title-gradient float-soft"
             >
               ONE AI.
@@ -127,7 +136,10 @@ const ProductsSection = () => {
               initial={{ opacity: 0, filter: "blur(8px)" }}
               animate={introInView ? { opacity: 1, filter: "blur(0px)" } : {}}
               transition={{ duration: 0.6, delay: 0.25 }}
-              style={{ x: useTransform(x, (v: number) => v * 6), y: useTransform(y, (v: number) => v * 6) }}
+              style={{
+                x: useTransform(x, (v: number) => v * 6),
+                y: useTransform(y, (v: number) => v * 6),
+              }}
               className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 bg-[length:200%_auto] section-title-gradient float-soft mt-1"
             >
               EVERY CAPABILITY.
@@ -142,139 +154,92 @@ const ProductsSection = () => {
             transition={{ duration: 0.5, delay: 0.45 }}
             className="mt-6 text-slate-600 text-base md:text-lg max-w-xl mx-auto leading-relaxed"
           >
-            One unified intelligence engine. Every capability reinforces every other.
+            One unified intelligence engine. Every capability reinforces every
+            other.
           </motion.p>
         </motion.div>
 
-        {/* Ecosystem: central core + orbit nodes (nudged left to optically center with right scroll line) */}
+        {/* Ecosystem: premium card grid replacing orbit circles */}
         <motion.div
           ref={ecosystemRef}
-          className="relative min-h-[520px] md:min-h-[580px] flex items-center justify-center -translate-x-[4%]"
+          className="relative"
           initial={{ opacity: 0 }}
           animate={ecosystemInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
+          style={{
+            x: useTransform(x, (v: number) => v * 10),
+            y: useTransform(y, (v: number) => v * 8),
+          }}
         >
-          {/* Connection lines (SVG) */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="xMidYMid meet"
-            aria-hidden
-          >
-            <defs>
-              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(8,145,178,0.2)" />
-                <stop offset="50%" stopColor="rgba(8,145,178,0.45)" />
-                <stop offset="100%" stopColor="rgba(8,145,178,0.2)" />
-              </linearGradient>
-            </defs>
-            {ECOSYSTEM_NODES.map((node) => {
-              const cx = 50;
-              const cy = 50;
-              const r = 38;
-              const ex = 50 + r * Math.cos((node.angle - 90) * RAD);
-              const ey = 50 + r * Math.sin((node.angle - 90) * RAD);
-              return (
-                <line
-                  key={node.id}
-                  x1={cx}
-                  y1={cy}
-                  x2={ex}
-                  y2={ey}
-                  stroke="url(#lineGrad)"
-                  strokeWidth="0.4"
-                />
-              );
-            })}
-          </svg>
-
-          {/* Central D360 Core */}
           <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+            className="relative rounded-2xl border border-cyan-500/35 bg-gradient-to-br from-white/95 via-cyan-50/80 to-slate-100/90 p-6 md:p-8 mb-6 md:mb-8 overflow-hidden shadow-[0_22px_70px_rgba(8,145,178,0.16)] glow-border-breathe"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={ecosystemInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-cyan-100/80 border border-cyan-500/40 flex items-center justify-center ecosystem-node-pulse shadow-[0_0_28px_rgba(8,145,178,0.2)]">
-              <span className="font-mono text-[10px] md:text-xs font-bold text-cyan-800 tracking-widest text-center leading-tight">
-                D360<br />CORE
-              </span>
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="section-text-sweep absolute inset-y-0 -left-1/4 w-1/3 bg-gradient-to-r from-transparent via-cyan-300/15 to-transparent" />
+            </div>
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-8">
+              <div className="max-w-2xl">
+                <p className="font-mono text-[10px] md:text-[11px] tracking-[0.35em] text-cyan-700/90 uppercase mb-2">
+                  D360 Core Intelligence
+                </p>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-800 mb-3 font-serif">
+                  Unified Orchestration Layer
+                </h3>
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                  A single runtime that routes context between Documents, Voice,
+                  Agents, and Workflow. Shared memory, unified policy control,
+                  and one operational surface.
+                </p>
+              </div>
+              <div className="grid grid-cols-3 gap-4 md:gap-5 md:min-w-[320px]">
+                <Stat value="99.99%" label="UPTIME" inView={ecosystemInView} />
+                <Stat value="<120ms" label="ROUTING" inView={ecosystemInView} />
+                <Stat
+                  value="1"
+                  label="CONTROL PLANE"
+                  inView={ecosystemInView}
+                />
+              </div>
             </div>
           </motion.div>
 
-          {/* Orbit nodes */}
-          {ECOSYSTEM_NODES.map((node, i) => {
-            const r = 38;
-            const ex = 50 + r * Math.cos((node.angle - 90) * RAD);
-            const ey = 50 + r * Math.sin((node.angle - 90) * RAD);
-            const isActive = activeId === node.id;
-            return (
-              <motion.div
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+            {ECOSYSTEM_NODES.map((node, i) => (
+              <motion.article
                 key={node.id}
-                className="absolute z-20"
-                style={{ left: `${ex}%`, top: `${ey}%`, transform: "translate(-50%, -50%)" }}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={
-                  ecosystemInView
-                    ? { opacity: 1, scale: 1 }
-                    : {}
-                }
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                initial={{ opacity: 0, y: 24 }}
+                animate={ecosystemInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.3 + i * 0.1 }}
+                className="group relative rounded-2xl border border-cyan-500/25 bg-gradient-to-br from-white/90 via-cyan-50/70 to-slate-100/80 p-5 md:p-6 backdrop-blur-[2px] shadow-[0_14px_42px_rgba(15,23,42,0.08)] hover:shadow-[0_20px_56px_rgba(8,145,178,0.16)] transition-all duration-300 hover:-translate-y-1"
               >
-                <motion.button
-                  type="button"
-                  className="group flex flex-col items-center gap-1 text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600"
-                  onMouseEnter={() => setActiveId(node.id)}
-                  onMouseLeave={() => setActiveId(null)}
-                  animate={{ scale: isActive ? 1.12 : 1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                >
-                  <div
-                    className={`w-16 h-16 md:w-20 md:h-20 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                      isActive
-                        ? "border-cyan-600 bg-cyan-100 shadow-[0_0_24px_rgba(8,145,178,0.35)]"
-                        : "border-cyan-500/40 bg-white/90 hover:border-cyan-600 hover:bg-cyan-50"
-                    }`}
-                  >
-                    <span className="font-mono text-[9px] md:text-[10px] font-bold text-cyan-800 tracking-wider">
-                      {node.name.toUpperCase()}
-                    </span>
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(120%_90%_at_10%_0%,rgba(34,211,238,0.15),transparent_55%)]" />
+                <div className="relative z-10">
+                  <p className="font-mono text-[10px] tracking-[0.28em] text-cyan-700/90 uppercase mb-3">
+                    {node.tag}
+                  </p>
+                  <h4 className="text-xl font-bold text-slate-800 tracking-tight mb-3 font-serif">
+                    {node.name}
+                  </h4>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-5 min-h-[88px]">
+                    {node.description}
+                  </p>
+                  <div className="grid grid-cols-3 gap-3 pt-4 border-t border-cyan-700/15">
+                    {node.stats.map((s) => (
+                      <Stat
+                        key={s.label}
+                        value={s.value}
+                        label={s.label}
+                        inView={ecosystemInView}
+                      />
+                    ))}
                   </div>
-                  {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, x: node.id === "workflow" ? -8 : 8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className={`absolute w-64 rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-200/50 backdrop-blur-sm p-4 text-left ring-1 ring-cyan-500/10 ${
-                        node.id === "workflow"
-                          ? "left-full ml-3 top-1/2 -translate-y-1/2"
-                          : node.id === "agents"
-                            ? "right-full mr-3 top-[calc(50%-2rem)] -translate-y-1/2"
-                            : "right-full mr-3 top-1/2 -translate-y-1/2"
-                      }`}
-                      style={{ zIndex: 30 }}
-                    >
-                      <div className="font-mono text-[9px] text-cyan-700 tracking-widest mb-2">
-                        {node.tag}
-                      </div>
-                      <p className="text-slate-600 text-xs leading-relaxed mb-3">
-                        {node.description}
-                      </p>
-                      <div className="flex gap-4 justify-between">
-                        {node.stats.map((s) => (
-                          <Stat
-                            key={s.label}
-                            value={s.value}
-                            label={s.label}
-                            inView={isActive}
-                          />
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </motion.button>
-              </motion.div>
-            );
-          })}
+                </div>
+              </motion.article>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

@@ -3,14 +3,17 @@ import { useRef } from "react";
 import piazzaLogo from "@/assets/piazza-logo-bg.png";
 
 const ContactSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLFormElement>(null);
   const inView = useInView(ref, { amount: 0.15, once: true });
 
   const inputClass =
     "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-body text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300";
 
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-10" id="contact">
+    <section
+      className="relative pt-24 md:pt-32 pb-6 px-6 md:px-10"
+      id="contact"
+    >
       <div className="relative z-10 max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -25,7 +28,8 @@ const ContactSection = () => {
             Initiate Deployment
           </h2>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-            Tell us about your challenge. We'll respond with architecture, timeline, and a clear path to D360 AI deployment.
+            Tell us about your challenge. We'll respond with architecture,
+            timeline, and a clear path to D360 AI deployment.
           </p>
         </motion.div>
 
@@ -54,13 +58,21 @@ const ContactSection = () => {
                 <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
                   Name
                 </label>
-                <input type="text" placeholder="Your name" className={inputClass} />
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  className={inputClass}
+                />
               </div>
               <div>
                 <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
                   Email
                 </label>
-                <input type="email" placeholder="you@company.com" className={inputClass} />
+                <input
+                  type="email"
+                  placeholder="you@company.com"
+                  className={inputClass}
+                />
               </div>
             </div>
 
@@ -68,7 +80,11 @@ const ContactSection = () => {
               <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
                 Company
               </label>
-              <input type="text" placeholder="Company name" className={inputClass} />
+              <input
+                type="text"
+                placeholder="Company name"
+                className={inputClass}
+              />
             </div>
 
             <div>
@@ -118,8 +134,8 @@ const ContactSection = () => {
         </motion.form>
       </div>
 
-      <footer className="relative z-10 max-w-6xl mx-auto mt-24 md:mt-32 pt-12 border-t border-slate-200">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <footer className="relative z-10 max-w-6xl mx-auto mt-24 md:mt-32 mb-0 pt-12 border-t border-slate-200">
+        <div className="flex flex-col md:flex-row md:flex-wrap justify-between items-start gap-8 md:gap-10">
           <div className="flex items-center gap-4">
             <img
               src={piazzaLogo}
@@ -146,6 +162,57 @@ const ContactSection = () => {
           </div>
           <div className="font-mono text-[10px] text-slate-400">
             © {new Date().getFullYear()} Piazza Consulting Group
+          </div>
+        </div>
+
+        <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
+          <div className="md:flex-1">
+            <div className="font-mono text-[10px] tracking-[0.25em] text-cyan-800 uppercase mb-3">
+              Contact Us
+            </div>
+
+            <div className="space-y-4 font-mono text-[10px] text-slate-600 leading-relaxed">
+              <div>
+                <div className="text-slate-800 tracking-[0.16em] uppercase mb-1">
+                  United States
+                </div>
+                <div>115 W. Century Road, Suite 130 Paramus, NJ 07652</div>
+              </div>
+
+              <div>
+                <div className="text-slate-800 tracking-[0.16em] uppercase mb-1">
+                  India
+                </div>
+                <div>WAVEROCK</div>
+                <div>Level-3 of Tower 2.1</div>
+                <div>M/s. TSI Business Parks (Hyderabad) Pvt. Ltd</div>
+                <div>Nanakramguda Village</div>
+                <div>Serilingampally Mandal</div>
+                <div>Ranga Reddy District</div>
+                <div>Telangana - 500032</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:w-[320px] md:pl-4 md:border-l md:border-slate-200/80 md:-translate-x-3 lg:-translate-x-5">
+            <div className="font-mono text-[10px] tracking-[0.25em] text-black uppercase mb-3">
+              Visit Us
+            </div>
+
+            <div className="font-mono text-[10px] text-black leading-relaxed space-y-2">
+              <a
+                href="mailto:info@pcongrp.com"
+                className="block text-black hover:text-slate-700 transition-colors"
+              >
+                info@pcongrp.com
+              </a>
+              <a
+                href="tel:8773171680"
+                className="block text-black hover:text-slate-700 transition-colors"
+              >
+                877-317-1680
+              </a>
+            </div>
           </div>
         </div>
       </footer>
