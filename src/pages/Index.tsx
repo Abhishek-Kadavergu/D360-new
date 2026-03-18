@@ -223,6 +223,7 @@ const Index = () => {
                       }}
                       className="mb-8 flex justify-center"
                     >
+                      
                       <img
                         src={piazzaLogo}
                         alt="Piazza Consulting Group"
