@@ -1,13 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import piazzaLogo from "@/assets/piazza-logo-bg.png";
+import pcgLogo from "@/assets/pcg-logo1.avif";
 
 const ContactSection = () => {
   const ref = useRef<HTMLFormElement>(null);
   const inView = useInView(ref, { amount: 0.15, once: true });
 
   const inputClass =
-    "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-body text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300";
+    "w-full rounded-lg border border-slate-300 bg-white px-4 py-3 font-body text-base text-black placeholder:text-slate-400 focus:border-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300";
 
   return (
     <section
@@ -22,7 +23,7 @@ const ContactSection = () => {
           className="mb-12 md:mb-16"
         >
           <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-cyan-700 mb-3 uppercase">
-            Deploy D360 AI
+            D360 AI
           </p>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700 mb-4">
             Contact Us
@@ -39,7 +40,7 @@ const ContactSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
           onSubmit={(e) => e.preventDefault()}
-          className="relative rounded-2xl border border-slate-200 bg-white p-6 md:p-10 shadow-lg shadow-slate-200/60 ring-1 ring-cyan-500/5"
+          className="relative rounded-2xl border border-slate-200 bg-white p-6 md:p-10 shadow-lg shadow-slate-200/60 ring-1 ring-cyan-500/5 text-black text-lg md:text-xl"
         >
           <div
             className="absolute inset-0 rounded-2xl opacity-[0.35] pointer-events-none"
@@ -55,7 +56,7 @@ const ContactSection = () => {
           <div className="relative space-y-5">
             <div className="grid md:grid-cols-2 gap-5">
               <div>
-                <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
+                <label className="font-bold text-base text-gray-700 tracking-widest block mb-2">
                   Name
                 </label>
                 <input
@@ -65,7 +66,7 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
+                <label className="font-bold text-base text-gray-700 tracking-widest block mb-2">
                   Email
                 </label>
                 <input
@@ -77,7 +78,7 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
+              <label className="font-bold text-base text-gray-700 tracking-widest block mb-2">
                 Company
               </label>
               <input
@@ -88,7 +89,7 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-2">
+              <label className="font-bold text-base text-gray-700 tracking-widest block mb-2">
                 What do you need D360 AI to do?
               </label>
               <textarea
@@ -99,7 +100,7 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <label className="font-mono text-[10px] text-cyan-800 tracking-widest block mb-3">
+              <label className="font-bold text-base text-gray-700 tracking-widest block mb-3">
                 D360 AI capabilities needed
               </label>
               <div className="flex flex-wrap gap-2">
@@ -113,7 +114,7 @@ const ContactSection = () => {
                 ].map((cap) => (
                   <label key={cap} className="cursor-pointer">
                     <input type="checkbox" className="sr-only peer" />
-                    <span className="font-mono text-[10px] tracking-widest text-slate-600 border border-slate-300 bg-slate-50 rounded-full px-3 py-1.5 inline-block peer-checked:border-cyan-600 peer-checked:bg-cyan-50 peer-checked:text-cyan-900 peer-focus-visible:ring-2 peer-focus-visible:ring-cyan-500/30 hover:border-cyan-400 transition-all duration-300">
+                    <span className="font-mono text-xs tracking-widest text-gray-700 border border-slate-300 bg-slate-50 rounded-full px-3 py-1.5 inline-block peer-checked:border-cyan-600 peer-checked:bg-cyan-50 peer-checked:text-cyan-900 peer-focus-visible:ring-2 peer-focus-visible:ring-cyan-500/30 hover:border-cyan-400 transition-all duration-300">
                       {cap.toUpperCase()}
                     </span>
                   </label>
@@ -138,52 +139,52 @@ const ContactSection = () => {
         <div className="flex flex-col md:flex-row md:flex-wrap justify-between items-start gap-8 md:gap-10">
           <div className="flex items-center gap-4">
             <img
-              src={piazzaLogo}
+              src={pcgLogo}
               alt="Piazza Consulting Group"
               className="h-10 rounded-lg"
             />
-            <div>
+            {/* <div>
               <div className="font-heading text-sm text-slate-900">Piazza</div>
               <div className="font-mono text-[9px] tracking-widest text-slate-500">
                 Consulting Group
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-wrap gap-6 md:gap-8">
             {["products", "services", "team", "contact"].map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
-                className="font-mono text-lg tracking-widest text-slate-500 hover:text-cyan-700 transition-colors"
+                className="font-sans text-base tracking-widest text-gray-900 hover:text-cyan-700 transition-colors"
               >
                 {s.toUpperCase()}
               </a>
             ))}
           </div>
-          <div className="font-mono text-[10px] text-slate-400">
+          <div className="font-sans font-semibold text-gray-800 text-[10px] tracking-[0.10em] uppercase mb-1">
             © {new Date().getFullYear()} Piazza Consulting Group
           </div>
         </div>
 
         <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-col md:flex-row md:items-start gap-6 md:gap-10">
           <div className="md:flex-1">
-            <div className="font-mono text-[10px] tracking-[0.25em] text-cyan-800 uppercase mb-3">
+            <div className="font-[Poppins] underline text-[18px] tracking-[0.15em] text-green-800 uppercase mb-3">
               Contact Us
             </div>
 
             <div className="space-y-4 font-mono text-[10px] text-slate-600 leading-relaxed">
               <div>
-                <div className="text-slate-800 tracking-[0.16em] uppercase mb-1">
+                <div className="font-sans font-semibold text-gray-800 text-[10px] tracking-[0.10em] uppercase mb-1">
                   United States
                 </div>
-                <div>115 W. Century Road, Suite 130 Paramus, NJ 07652</div>
+                <div className="font-sans font-semibold text-gray-800 text-[10px] tracking-[0.10em] uppercase mb-1">115 W. Century Road, Suite 130 Paramus, NJ 07652</div>
               </div>
 
-              <div>
-                <div className="text-slate-800 tracking-[0.16em] uppercase mb-1">
+              <div className="font-sans font-semibold text-gray-800 text-[10px] tracking-[0.10em] uppercase mb-1">
+                <div className="text-gray-800 text-[10px] tracking-[0.16em] uppercase mb-1">
                   India
-                </div>
-                <div>WAVEROCK</div>
+                </div >
+                <div >WAVEROCK</div>
                 <div>Level-3 of Tower 2.1</div>
                 <div>M/s. TSI Business Parks (Hyderabad) Pvt. Ltd</div>
                 <div>Nanakramguda Village</div>
@@ -195,11 +196,11 @@ const ContactSection = () => {
           </div>
 
           <div className="md:w-[320px] md:pl-4 md:border-l md:border-slate-200/80 md:-translate-x-3 lg:-translate-x-5">
-            <div className="font-mono text-[10px] tracking-[0.25em] text-black uppercase mb-3">
+            <div className="font-[Poppins] underline text-[18px] tracking-[0.15em] text-green-800 uppercase mb-3">
               Visit Us
             </div>
 
-            <div className="font-mono text-[10px] text-black leading-relaxed space-y-2">
+            <div className="font-sans font-semibold text-gray-800 text-[10px] tracking-[0.10em] uppercase mb-1">
               <a
                 href="mailto:info@pcongrp.com"
                 className="block text-black hover:text-slate-700 transition-colors"

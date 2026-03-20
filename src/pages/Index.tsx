@@ -556,7 +556,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="font-mono text-xs md:text-sm text-cyan-700 tracking-[0.35em] mb-4">
+                <div className="font-mono text-lg md:text-xl text-cyan-700 tracking-[0.35em] mb-4">
                   MULTIMODAL INTELLIGENCE ENGINE
                 </div>
                 <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6">
