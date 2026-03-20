@@ -27,7 +27,7 @@ class SoundEngine {
     // Soft bell tone
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = "sine";
+    osc.type = "triangle";
     osc.frequency.setValueAtTime(880, now);
     osc.frequency.exponentialRampToValueAtTime(660, now + 0.3);
     gain.gain.setValueAtTime(0, now);
@@ -58,7 +58,7 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = "sine";
+    osc.type = "triangle";
     osc.frequency.setValueAtTime(1200, now);
     osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
     gain.gain.setValueAtTime(0.02, now);
@@ -112,7 +112,7 @@ class SoundEngine {
     [110, 165, 220].forEach((freq) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = "sine";
+      osc.type = "triangle";
       osc.frequency.value = freq;
       gain.gain.setValueAtTime(0, now);
       gain.gain.linearRampToValueAtTime(0.008, now + 2);
@@ -134,7 +134,7 @@ class SoundEngine {
     const buf = ctx.createBuffer(1, len, ctx.sampleRate);
     const d = buf.getChannelData(0);
     for (let i = 0; i < len; i++) {
-      d[i] = (Math.random() * 2 - 1);
+      d[i] = Math.random() * 2 - 1;
     }
     noise.buffer = buf;
 

@@ -7,13 +7,13 @@ const TeamSection = () => {
   const inView = useInView(ref, { amount: 0.1, once: true });
 
   return (
-    <section className="relative py-24 md:py-32 px-6 md:px-10" id="team">
+    <section className="relative py-20 md:py-24 px-6 md:px-10 mb-0" id="team">
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-8 md:mb-10"
         >
           <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-cyan-700 mb-3 uppercase">
             The Builders

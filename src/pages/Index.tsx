@@ -64,7 +64,7 @@ const Index = () => {
   const enableSound = useCallback(async () => {
     await soundEngine.init();
     setSoundEnabled(true);
-    soundEngine.playWhoosh();
+    // soundEngine.playWhoosh();
     setCurrentStep(-1);
   }, []);
 
@@ -83,10 +83,10 @@ const Index = () => {
         if (next >= TOTAL_STEPS) {
           if (!ignited) {
             setIgnited(true);
-            if (soundEnabled) soundEngine.playIgnition();
+            // if (soundEnabled) soundEngine.playIgnition();
             setTimeout(() => {
               setNarrativeComplete(true);
-              if (soundEnabled) soundEngine.playAmbientHum(8);
+              // if (soundEnabled) soundEngine.playAmbientHum(8);
             }, 4500);
           }
           return TOTAL_STEPS;
@@ -96,10 +96,10 @@ const Index = () => {
 
         if (soundEnabled) {
           if (direction > 0) {
-            soundEngine.playTransition();
-            soundEngine.playNodeConnect();
+            // soundEngine.playTransition();
+            // soundEngine.playNodeConnect();
           } else {
-            soundEngine.playWhoosh();
+            // soundEngine.playWhoosh();
           }
         }
 
