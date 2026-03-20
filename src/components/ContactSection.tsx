@@ -154,7 +154,7 @@ const ContactSection = () => {
               <a
                 key={s}
                 href={`#${s}`}
-                className="font-mono text-[10px] tracking-widest text-slate-500 hover:text-cyan-700 transition-colors"
+                className="font-mono text-lg tracking-widest text-slate-500 hover:text-cyan-700 transition-colors"
               >
                 {s.toUpperCase()}
               </a>

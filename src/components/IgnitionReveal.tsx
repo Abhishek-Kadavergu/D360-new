@@ -11,8 +11,16 @@ const IgnitionReveal = ({ visible }: IgnitionRevealProps) => {
   const [phase, setPhase] = useState(0);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const parallaxX = useSpring(mouseX, { stiffness: 85, damping: 26, mass: 0.6 });
-  const parallaxY = useSpring(mouseY, { stiffness: 85, damping: 26, mass: 0.6 });
+  const parallaxX = useSpring(mouseX, {
+    stiffness: 85,
+    damping: 26,
+    mass: 0.6,
+  });
+  const parallaxY = useSpring(mouseY, {
+    stiffness: 85,
+    damping: 26,
+    mass: 0.6,
+  });
 
   useEffect(() => {
     if (!visible) return;
@@ -26,13 +34,16 @@ const IgnitionReveal = ({ visible }: IgnitionRevealProps) => {
     return () => timers.forEach(clearTimeout);
   }, [visible]);
 
-  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 16;
-    mouseX.set(x);
-    mouseY.set(y);
-  }, [mouseX, mouseY]);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 16;
+      mouseX.set(x);
+      mouseY.set(y);
+    },
+    [mouseX, mouseY],
+  );
 
   if (!visible) return null;
 
@@ -85,14 +96,15 @@ const IgnitionReveal = ({ visible }: IgnitionRevealProps) => {
               className="relative mx-auto mb-8 w-fit"
               style={{ x: parallaxX, y: parallaxY }}
             >
-              <div className="pointer-events-none absolute -inset-x-10 -inset-y-8 -z-10 bg-cyan-400/20 blur-[80px]" />
-              <div className="relative overflow-hidden rounded-2xl d360-logo-float shadow-[0_0_80px_rgba(0,240,255,0.25)]">
+              <div className="pointer-events-none absolute -inset-x-10 -inset-y-8 -z-10 bg-cyan-300/12 blur-[84px]" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-36 w-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-200/12 blur-[78px]" />
+              <div className="relative d360-logo-float">
                 <img
                   src={d360Logo}
                   alt="DOCS360 AI"
-                  className="h-24 w-auto md:h-36 lg:h-44 object-contain"
+                  className="relative z-10 h-24 w-auto object-contain drop-shadow-[0_0_22px_rgba(120,220,255,0.24)] md:h-36 lg:h-44"
                 />
-                <span className="d360-shine-sweep pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-transparent via-cyan-200/35 to-transparent" />
+                <span className="d360-shine-sweep pointer-events-none absolute inset-y-1 left-[8%] w-1/4 bg-gradient-to-r from-transparent via-cyan-100/20 to-transparent blur-[1px]" />
               </div>
             </motion.div>
           )}

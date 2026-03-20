@@ -4,6 +4,7 @@ import {
   useCallback,
   useRef,
   type MouseEvent,
+  type WheelEvent as ReactWheelEvent,
 } from "react";
 import {
   motion,
@@ -173,6 +174,23 @@ const Index = () => {
     [currentStep, narrativeX, narrativeY],
   );
 
+  const handleLandingHeroWheel = useCallback(
+    (e: ReactWheelEvent<HTMLElement>) => {
+      if (!narrativeComplete) return;
+
+      const nearTop = window.scrollY <= 8;
+      const scrollingUp = e.deltaY < 0;
+
+      if (nearTop && scrollingUp) {
+        e.preventDefault();
+        setNarrativeComplete(false);
+        setIgnited(false);
+        setCurrentStep(-1);
+      }
+    },
+    [narrativeComplete],
+  );
+
   return (
     <div ref={scrollContainerRef}>
       {/* ====== SPLIT-SCREEN NARRATIVE EXPERIENCE ====== */}
@@ -223,7 +241,6 @@ const Index = () => {
                       }}
                       className="mb-8 flex justify-center"
                     >
-                      
                       <img
                         src={piazzaLogo}
                         alt="Piazza Consulting Group"
@@ -242,15 +259,15 @@ const Index = () => {
                       initial={{ opacity: 0, y: 22 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.55, delay: 0.4 }}
-                      className="relative mb-7"
+                      className="relative"
                     >
-                      <div className="pointer-events-none absolute inset-0 -z-10 bg-cyan-400/10 blur-3xl" />
+                      <div className="pointer-events-none mt-8 mb-8 absolute inset-0 -z-10 bg-cyan-400/10 blur-3xl" />
                       <img
                         src={d360Logo}
                         alt="DOCS360 AI"
-                        className="mx-auto h-auto w-[min(90vw,780px)] max-w-full object-contain"
+                        className="h-auto w-[min(90vw,780px)] mt-8 mb-8 max-w-full object-contain"
                       />
-                      <div className="mx-auto mt-4 h-px w-44 overflow-hidden rounded-full bg-cyan-200/20">
+                      <div className="mx-auto h-px mb-2 w-44 overflow-hidden rounded-full bg-cyan-200/20">
                         <div className="underline-sweep h-full w-1/3 bg-gradient-to-r from-transparent via-cyan-300 to-transparent" />
                       </div>
                     </motion.div>
@@ -271,7 +288,7 @@ const Index = () => {
                     >
                       <button
                         onClick={enableSound}
-                        className="group relative overflow-hidden rounded-full border border-cyan-400/30 bg-white/5 px-10 py-4 text-lg font-semibold text-cyan-100 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_45px_rgba(0,255,255,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 active:scale-[0.96] shadow-[0_0_25px_rgba(0,255,255,0.4)] animate-premium-pulse"
+                        className="group relative w-full max-w-[320px] overflow-hidden rounded-full border border-cyan-400/30 bg-white/5 px-6 py-3 text-sm font-semibold text-cyan-100 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_45px_rgba(0,255,255,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 active:scale-[0.96] sm:w-auto sm:px-8 sm:py-3.5 sm:text-base md:px-10 md:py-4 md:text-lg shadow-[0_0_25px_rgba(0,255,255,0.4)] animate-premium-pulse"
                       >
                         <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-cyan-200/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                         <span className="absolute inset-0 rounded-full border border-transparent bg-[linear-gradient(110deg,transparent_20%,rgba(0,240,255,0.55)_50%,transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -523,7 +540,10 @@ const Index = () => {
           </nav>
 
           {/* Hero — dark area: agent only */}
-          <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D] pt-20 pb-8">
+          <section
+            className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D] pt-20 pb-8"
+            onWheel={handleLandingHeroWheel}
+          >
             <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}

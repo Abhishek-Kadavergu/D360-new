@@ -82,7 +82,7 @@ const NarrativeSection = ({ step, currentStep }: NarrativeSectionProps) => {
         </h2>
 
         {/* Body */}
-        <p className="font-body text-sm leading-relaxed text-blue-200/50 max-w-[420px] mb-6">
+        <p className="font-body text-lg leading-relaxed text-blue-200/50 max-w-[420px] mb-6">
           {data.body}
         </p>
 
