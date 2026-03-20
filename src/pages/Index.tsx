@@ -528,7 +528,7 @@ const Index = () => {
             <div className="mx-auto flex max-w-[1100px] items-center justify-between px-5 py-4 sm:px-8">
               <div className="flex items-center gap-4">
                 <img src={d360Logo} alt="D360AI" className="h-7 md:h-8" />
-                <span className="hidden font-mono text-[10px] tracking-widest text-slate-400 sm:inline">
+                <span className="hidden font-mono text-[10px] tracking-widest text-slate-900 sm:inline">
                   BY PIAZZA
                 </span>
               </div>
@@ -537,7 +537,7 @@ const Index = () => {
                   <a
                     key={section}
                     href={`#${section}`}
-                    className="font-mono text-[10px] tracking-widest text-slate-500 transition-colors hover:text-cyan-700"
+                    className="font-sans font-semibold text-[13px] tracking-widest text-black transition-colors hover:text-cyan-700"
                   >
                     {section.toUpperCase()}
                   </a>

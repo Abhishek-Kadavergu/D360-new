@@ -108,7 +108,7 @@ function LandingHero({
 
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
           <motion.div
-            className="flex justify-center lg:justify-end lg:pr-1"
+            className="flex mt-6 justify-center lg:justify-end lg:pr-1 max-w-[540px] h-[340px]"
             style={{
               x: reduceMotion ? 0 : leftX,
               y: reduceMotion ? 0 : leftY,
@@ -127,7 +127,7 @@ function LandingHero({
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.25 }}
-            className="relative mx-auto flex h-[110px] w-full max-w-[190px] items-center justify-center lg:h-[210px] lg:max-w-[150px]"
+            className="relative mx-auto flex w-full  max-w-[540px] h-[340px] items-center justify-center lg:h-[210px] lg:max-w-[150px]"
             aria-hidden
           >
             <div

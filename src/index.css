@@ -544,7 +544,7 @@ html {
 
 /* Landing hero — color treatment only (rectangular images, no masks) */
 .hero-landing-img-chaos {
-  filter: saturate(0.52) contrast(0.9) brightness(0.88);
+  filter: saturate(0.7) contrast(0.96) brightness(1);
 }
 
 .hero-landing-img-clarity {
