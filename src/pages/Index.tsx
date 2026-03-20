@@ -454,17 +454,29 @@ const Index = () => {
                   </div>
 
                   {/* Progress bar at bottom of left panel */}
-                  <div className="absolute bottom-8 left-8 md:left-12 lg:left-16 z-20 flex items-center gap-2">
-                    {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
-                      <div
-                        key={i}
-                        className={`h-1 rounded-full transition-all duration-500 ${
-                          i <= currentStep
-                            ? "bg-cyan-400 w-6"
-                            : "bg-blue-800/50 w-2"
-                        }`}
-                      />
-                    ))}
+                  <div className="absolute bottom-8 left-8 right-8 md:left-12 md:right-12 lg:left-16 lg:right-16 z-20 flex items-end justify-between">
+                    <div className="flex items-center gap-2">
+                      {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
+                        <div
+                          key={i}
+                          className={`h-1 rounded-full transition-all duration-500 ${
+                            i <= currentStep
+                              ? "bg-cyan-400 w-6"
+                              : "bg-blue-800/50 w-2"
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {currentStep >= 0 && currentStep < TOTAL_STEPS - 1 && (
+                      <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan-200/75">
+                        <div className="relative flex h-8 w-8 items-center justify-center rounded-full border border-cyan-300/45 bg-cyan-400/10 shadow-[0_0_22px_rgba(34,211,238,0.3)]">
+                          <span className="absolute inset-0 rounded-full border border-cyan-200/35 animate-ping" />
+                          <span className="relative text-[11px] text-cyan-100 animate-bounce">↓</span>
+                        </div>
+                        <span className="text-cyan-100">NEXT TEXT</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Step counter */}

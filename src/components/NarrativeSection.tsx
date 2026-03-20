@@ -59,7 +59,6 @@ const NarrativeSection = ({ step, currentStep }: NarrativeSectionProps) => {
   if (!data) return null;
 
   const isActive = step === currentStep;
-  const showScrollHint = isActive && step < NARRATIVE_STEPS.length - 1;
 
   return (
     <div
@@ -67,7 +66,7 @@ const NarrativeSection = ({ step, currentStep }: NarrativeSectionProps) => {
         isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       } pointer-events-none`}
     >
-      <div className="relative w-full">
+      <div className="w-full">
         {/* Step counter */}
         <div className="mb-4 font-mono text-[10px] tracking-widest text-cyan-400/60 flex items-center gap-3">
           <span className="text-cyan-400 font-bold text-sm">
@@ -92,19 +91,8 @@ const NarrativeSection = ({ step, currentStep }: NarrativeSectionProps) => {
           {data.tag}
         </div>
 
-        {showScrollHint && (
-          <div className="absolute -bottom-20 right-0 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-cyan-200/75">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-full border border-cyan-300/45 bg-cyan-400/10 shadow-[0_0_24px_rgba(34,211,238,0.32)]">
-              <span className="absolute inset-0 rounded-full border border-cyan-200/40 animate-ping" />
-              <span className="relative text-xs text-cyan-100 animate-bounce">↓</span>
-            </div>
-            <div className="flex flex-col gap-1">
-              <span>SCROLL FOR</span>
-              <span className="text-cyan-100">NEXT TEXT</span>
-            </div>
-          </div>
-        )}
       </div>
+
     </div>
   );
 };
