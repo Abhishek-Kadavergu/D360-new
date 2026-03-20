@@ -1,54 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const TEAM = [
-  {
-    name: "Marco Piazza",
-    role: "Founder & CEO",
-    bio: "Former ML Lead at Google DeepMind. 15 years in applied AI. Built D360 AI from first principles.",
-  },
-  {
-    name: "Dr. Elena Rossi",
-    role: "Chief Scientist",
-    bio: "PhD Stanford AI Lab. 40+ published papers on transformer architectures and multi-modal learning.",
-  },
-  {
-    name: "James Chen",
-    role: "Head of Engineering",
-    bio: "Ex-Meta infrastructure. Built ML systems serving 2B+ daily predictions at scale.",
-  },
-  {
-    name: "Sarah Okafor",
-    role: "VP Product",
-    bio: "Former McKinsey partner turned product leader. Designed the D360 AI Workflow Designer.",
-  },
-  {
-    name: "Alex Kumar",
-    role: "Lead ML Engineer",
-    bio: "Core PyTorch contributor. Architect of D360 AI's cross-modal attention system.",
-  },
-  {
-    name: "Dr. Lisa Park",
-    role: "Head of AI Safety",
-    bio: "Ex-OpenAI. Built D360 AI's enterprise safety protocols and alignment framework.",
-  },
-];
+import pcgLogo from "../assets/pcg-logo1.avif";
 
 const TeamSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.1, once: true });
 
   return (
-    <section
-      className="relative py-24 md:py-32 px-6 md:px-10"
-      id="team"
-    >
+    <section className="relative py-24 md:py-32 px-6 md:px-10" id="team">
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16 md:mb-20"
+          className="text-center mb-16 md:mb-20"
         >
           <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] text-cyan-700 mb-3 uppercase">
             The Builders
@@ -56,55 +21,69 @@ const TeamSection = () => {
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-700 mb-4">
             Team
           </h2>
-          <p className="text-slate-600 text-sm md:text-base max-w-xl leading-relaxed">
-            Engineers, researchers, and strategists who've shipped AI at the world's most demanding scale.
+          <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Engineers, researchers, and strategists who've shipped AI at the
+            world's most demanding scale.
           </p>
         </motion.div>
 
-        <div
+        <motion.div
           ref={ref}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center"
         >
-          {TEAM.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative"
-            >
-              <div className="relative rounded-2xl border border-slate-200 bg-white shadow-sm p-6 md:p-8 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-100/50 hover:-translate-y-1">
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(6,182,212,0.08),transparent_60%)]" />
-                </div>
-
-                <div className="relative">
-                  <div className="mb-5 flex justify-center md:justify-start">
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-cyan-500/40 bg-cyan-50 flex items-center justify-center ecosystem-node-pulse group-hover:border-cyan-600 group-hover:shadow-[0_0_20px_rgba(8,145,178,0.25)] transition-all duration-300">
-                      <span className="font-mono text-lg font-bold text-cyan-800">
-                        {member.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
-                      <span className="absolute inset-[-2px] rounded-full border border-cyan-400/40 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
-                    </div>
-                  </div>
-
-                  <h3 className="font-heading text-lg text-slate-900 mb-1 group-hover:text-cyan-900 transition-colors">
-                    {member.name}
-                  </h3>
-                  <p className="font-mono text-[10px] text-cyan-700 tracking-widest mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
+          <a
+            href="https://piazza-website-beta.vercel.app/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group block focus:outline-none"
+            tabIndex={0}
+          >
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-xl group-hover:from-cyan-500/30 group-hover:to-blue-500/30 transition-all duration-500 pointer-events-none" />
+            <div className="relative bg-white rounded-3xl border border-slate-200/60 shadow-lg p-4 md:p-6 hover:shadow-2xl hover:border-cyan-400/60 transition-all duration-500 hover:-translate-y-2">
+              <div className="flex flex-col items-center space-y-6">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="relative"
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-blue-400/20 blur-lg animate-pulse" />
+                  <img
+                    src={pcgLogo}
+                    alt="PCG Logo"
+                    className="relative w-32 h-20 md:w-44 md:h-24 object-contain"
+                  />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-center"
+                >
+                  <span className="inline-flex items-center space-x-2 text-cyan-700 hover:text-cyan-900 font-mono text-sm md:text-base tracking-wide transition-all duration-300 hover:scale-105 group/link">
+                    <span>visit the website</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </span>
+                </motion.div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
