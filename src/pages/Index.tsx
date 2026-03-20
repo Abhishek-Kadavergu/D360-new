@@ -523,32 +523,34 @@ const Index = () => {
           transition={{ duration: 1 }}
           className="min-h-screen"
         >
-          {/* Sticky nav — light glass over hero */}
-          <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/88 shadow-sm backdrop-blur-md">
-            <div className="mx-auto flex max-w-[1100px] items-center justify-between px-5 py-4 sm:px-8">
-              <div className="flex items-center gap-4">
-                <img src={d360Logo} alt="D360AI" className="h-7 md:h-8" />
-                <span className="hidden font-mono text-[10px] tracking-widest text-slate-900 sm:inline">
-                  BY PIAZZA
-                </span>
+          {/* Sticky nav — light glass over hero (floating pill shell) */}
+          <nav className="pointer-events-none fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-1 sm:px-6 sm:pt-2 md:px-10 md:pt-3">
+            <div className="pointer-events-auto w-full max-w-7xl rounded-full border border-slate-200/50 bg-white/88 shadow-lg backdrop-blur-md">
+              <div className="mx-auto flex max-w-[1100px] items-center justify-between px-5 py-4 sm:px-8">
+                <div className="flex items-center gap-4">
+                  <img src={d360Logo} alt="D360AI" className="h-7 md:h-8" />
+                  <span className="hidden font-mono text-[10px] tracking-widest text-slate-900 sm:inline">
+                    BY PIAZZA
+                  </span>
+                </div>
+                <div className="hidden gap-8 md:flex">
+                  {["products", "services", "team", "contact"].map((section) => (
+                    <a
+                      key={section}
+                      href={`#${section}`}
+                      className="font-sans font-semibold text-[13px] tracking-widest text-black transition-colors hover:text-cyan-700"
+                    >
+                      {section.toUpperCase()}
+                    </a>
+                  ))}
+                </div>
+                <a
+                  href="#contact"
+                  className="rounded-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-5 py-2 font-mono text-[10px] tracking-widest text-white shadow-md shadow-cyan-600/20 transition-all hover:from-cyan-500 hover:to-cyan-600"
+                >
+                  GET ACCESS
+                </a>
               </div>
-              <div className="hidden gap-8 md:flex">
-                {["products", "services", "team", "contact"].map((section) => (
-                  <a
-                    key={section}
-                    href={`#${section}`}
-                    className="font-sans font-semibold text-[13px] tracking-widest text-black transition-colors hover:text-cyan-700"
-                  >
-                    {section.toUpperCase()}
-                  </a>
-                ))}
-              </div>
-              <a
-                href="#contact"
-                className="rounded-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-5 py-2 font-mono text-[10px] tracking-widest text-white shadow-md shadow-cyan-600/20 transition-all hover:from-cyan-500 hover:to-cyan-600"
-              >
-                GET ACCESS
-              </a>
             </div>
           </nav>
 
