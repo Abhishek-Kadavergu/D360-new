@@ -77,10 +77,10 @@ const ServicesSection = () => {
                 </div>
 
                 <div className="relative pl-0 md:pl-4">
-                  <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-800 transition-colors duration-300">
+                  <h3 className="text-2xl md:text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-800 transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
+                  <p className="text-slate-600 text-2xl md:text-base leading-relaxed max-w-xl">
                     {service.description}
                   </p>
                 </div>

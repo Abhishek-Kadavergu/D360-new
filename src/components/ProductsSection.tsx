@@ -220,10 +220,10 @@ const ProductsSection = () => {
                   <p className="font-mono text-[10px] tracking-[0.28em] text-cyan-700/90 uppercase mb-3">
                     {node.tag}
                   </p>
-                  <h4 className="text-xl font-bold text-slate-800 tracking-tight mb-3 font-serif">
+                  <h4 className="text-2xl font-bold text-slate-800 tracking-tight mb-3 font-serif">
                     {node.name}
                   </h4>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5 min-h-[88px]">
+                  <p className="text-slate-600 text-base leading-relaxed mb-5 min-h-[88px]">
                     {node.description}
                   </p>
                   <div className="grid grid-cols-3 gap-3 pt-4 border-t border-cyan-700/15">

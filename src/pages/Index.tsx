@@ -547,7 +547,7 @@ const Index = () => {
           <div className="relative landing-sections-light text-slate-800">
             <div className="landing-mesh-light" aria-hidden />
             <div className="landing-grain-light" aria-hidden />
-            <ScrollProgressLine light />
+            {/* <ScrollProgressLine light /> */}
 
             <div className="relative z-10 max-w-2xl mx-auto px-6 pt-12 pb-8 text-center border-t border-slate-200/80 bg-gradient-to-b from-slate-50 to-white">
               <motion.div

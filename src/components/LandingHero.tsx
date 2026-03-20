@@ -83,7 +83,7 @@ function LandingHero({
               Instant Intelligence.
             </span>
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-slate-600 md:text-lg">
+          {/* <p className="mt-5 text-base leading-relaxed text-slate-600 md:text-lg">
             Transform unstructured files into clean, validated, actionable data
             — in seconds using Zero-Shot AI.
           </p>
@@ -103,7 +103,7 @@ function LandingHero({
           </div>
           <p className="mt-8 font-mono text-[10px] tracking-[0.1em] text-slate-500 sm:text-[11px]">
             98% Accuracy • 10M+ Documents Processed • GDPR & HIPAA Compliant
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
