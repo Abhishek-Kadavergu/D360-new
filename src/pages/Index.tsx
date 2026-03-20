@@ -301,14 +301,14 @@ const Index = () => {
                         </span>
                       </button>
                     </motion.div>
-                    <motion.div
+                    {/* <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 1.06 }}
                       className="mt-5 font-mono text-[10px] tracking-[0.24em] text-cyan-300/45"
                     >
                       ♪ SOUND RECOMMENDED
-                    </motion.div>
+                    </motion.div> */}
                   </motion.div>
                 </div>
               </motion.div>
@@ -474,7 +474,7 @@ const Index = () => {
                           <span className="absolute inset-0 rounded-full border border-cyan-200/35 animate-ping" />
                           <span className="relative text-[11px] text-cyan-100 animate-bounce">↓</span>
                         </div>
-                        <span className="text-cyan-100">NEXT TEXT</span>
+                        <span className="text-cyan-100">SCROLL DOWN</span>
                       </div>
                     )}
                   </div>
