@@ -21,6 +21,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ProductsSection from "@/components/ProductsSection";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
+import LandingHero from "@/components/LandingHero";
 import ScrollProgressLine from "@/components/ScrollProgressLine";
 import { soundEngine } from "@/lib/soundEngine";
 import piazzaLogo from "@/assets/piazza-logo-bg.png";
@@ -510,21 +511,21 @@ const Index = () => {
           transition={{ duration: 1 }}
           className="min-h-screen"
         >
-          {/* Sticky nav — dark over hero */}
-          <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a1628]/95 backdrop-blur-sm border-b border-blue-900/30">
-            <div className="max-w-[1100px] mx-auto px-8 py-4 flex items-center justify-between">
+          {/* Sticky nav — light glass over hero */}
+          <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/88 shadow-sm backdrop-blur-md">
+            <div className="mx-auto flex max-w-[1100px] items-center justify-between px-5 py-4 sm:px-8">
               <div className="flex items-center gap-4">
-                <img src={d360Logo} alt="DOCS360 AI" className="h-7 md:h-8" />
-                <span className="font-mono text-[10px] text-blue-300/50 tracking-widest hidden sm:inline">
+                <img src={d360Logo} alt="D360AI" className="h-7 md:h-8" />
+                <span className="hidden font-mono text-[10px] tracking-widest text-slate-400 sm:inline">
                   BY PIAZZA
                 </span>
               </div>
-              <div className="hidden md:flex gap-8">
+              <div className="hidden gap-8 md:flex">
                 {["products", "services", "team", "contact"].map((section) => (
                   <a
                     key={section}
                     href={`#${section}`}
-                    className="font-mono text-[10px] tracking-widest text-blue-300/60 hover:text-cyan-400 transition-colors"
+                    className="font-mono text-[10px] tracking-widest text-slate-500 transition-colors hover:text-cyan-700"
                   >
                     {section.toUpperCase()}
                   </a>
@@ -532,31 +533,15 @@ const Index = () => {
               </div>
               <a
                 href="#contact"
-                className="font-mono text-[10px] tracking-widest text-white bg-cyan-500 rounded-full px-5 py-2 hover:bg-cyan-400 transition-all shadow-sm"
+                className="rounded-full bg-gradient-to-r from-cyan-600 to-cyan-700 px-5 py-2 font-mono text-[10px] tracking-widest text-white shadow-md shadow-cyan-600/20 transition-all hover:from-cyan-500 hover:to-cyan-600"
               >
                 GET ACCESS
               </a>
             </div>
           </nav>
 
-          {/* Hero — dark area: agent only */}
-          <section
-            className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#050B18] via-[#071A2D] to-[#02050D] pt-20 pb-8"
-            onWheel={handleLandingHeroWheel}
-          >
-            <div className="relative z-0 flex flex-1 flex-col items-center justify-center w-full max-w-6xl mx-auto px-4 sm:px-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full h-[min(85vh,960px)] min-h-[480px] max-h-[960px] flex items-center justify-center"
-              >
-                <div className="w-full h-full max-w-6xl mx-auto">
-                  <ArchitectureSVG progress={1} ignited={true} fitContain />
-                </div>
-              </motion.div>
-            </div>
-          </section>
+          {/* Hero — light theme: document → intelligence */}
+          <LandingHero onWheel={handleLandingHeroWheel} />
 
           {/* Light theme: everything below the agent */}
           <div className="relative landing-sections-light text-slate-800">
