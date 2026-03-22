@@ -62,15 +62,24 @@ const Index = () => {
   });
 
   const enableSound = useCallback(async () => {
-    await soundEngine.init();
-    setSoundEnabled(true);
-    // soundEngine.playWhoosh();
+    // Advance UI immediately; audio init follows so a stuck AudioContext can't strand the splash.
     setCurrentStep(-1);
+    try {
+      await soundEngine.init();
+      setSoundEnabled(true);
+    } catch {
+      setSoundEnabled(false);
+    }
+    // soundEngine.playWhoosh();
   }, []);
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
-      if (narrativeComplete || currentStep === -2) return;
+      if (narrativeComplete) return;
+      // Splash uses a window capture listener (see below) so wheel works over fixed layers
+      // and with inverted / trackpad deltas — not only "scroll down" in one axis.
+      if (currentStep === -2) return;
+
       e.preventDefault();
       if (isScrolling.current) return;
       isScrolling.current = true;
@@ -120,14 +129,20 @@ const Index = () => {
 
   const handleTouchEnd = useCallback(
     (e: TouchEvent) => {
-      if (narrativeComplete || currentStep === -2) return;
+      if (narrativeComplete) return;
       const diff = touchStart.current - e.changedTouches[0].clientY;
+      if (currentStep === -2) {
+        if (Math.abs(diff) > 50 && diff > 0) {
+          void enableSound();
+        }
+        return;
+      }
       if (Math.abs(diff) > 50) {
         const fakeWheel = new WheelEvent("wheel", { deltaY: diff });
         handleWheel(fakeWheel);
       }
     },
-    [handleWheel, narrativeComplete, currentStep],
+    [handleWheel, narrativeComplete, currentStep, enableSound],
   );
 
   useEffect(() => {
@@ -147,6 +162,29 @@ const Index = () => {
       };
     }
   }, [handleWheel, handleTouchStart, handleTouchEnd, narrativeComplete]);
+
+  // Reliable splash advance: capture at window so fixed/fullscreen layers always receive
+  // non-passive preventDefault; accept any scroll direction (natural scrolling inverts deltaY).
+  useEffect(() => {
+    if (narrativeComplete || currentStep !== -2) return;
+
+    const onSplashWheel = (e: WheelEvent) => {
+      const magnitude = Math.abs(e.deltaY) + Math.abs(e.deltaX);
+      if (magnitude === 0) return;
+      e.preventDefault();
+      if (isScrolling.current) return;
+      isScrolling.current = true;
+      void enableSound();
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, 700);
+    };
+
+    window.addEventListener("wheel", onSplashWheel, { passive: false, capture: true });
+    return () => {
+      window.removeEventListener("wheel", onSplashWheel, true);
+    };
+  }, [narrativeComplete, currentStep, enableSound]);
 
   const architectureProgress =
     currentStep < 0 ? 0 : Math.min((currentStep + 1) / TOTAL_STEPS, 1);
@@ -287,28 +325,15 @@ const Index = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.45, delay: 0.9 }}
                     >
-                      <button
-                        onClick={enableSound}
-                        className="group relative w-full max-w-[320px] overflow-hidden rounded-full border border-blue-200/50 bg-gradient-to-r from-[#4DA3FF] to-[#1E90FF] px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_0_25px_rgba(30,144,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 active:scale-[0.96] sm:w-auto sm:px-8 sm:py-3.5 sm:text-base md:px-10 md:py-4 md:text-lg shadow-[0_4px_14px_rgba(0,118,255,0.39)]"
-                      >
-                        <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
-                        <span className="absolute inset-0 rounded-full border border-transparent bg-[linear-gradient(110deg,transparent_20%,rgba(255,255,255,0.25)_50%,transparent_80%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                        <span className="relative z-10 flex items-center gap-3">
-                          ENTER EXPERIENCE
-                          <span className="text-white transition-all duration-300 group-hover:translate-x-1.5 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)]">
-                            ▸
-                          </span>
+                      <div className="flex flex-col items-center gap-2 select-none">
+                        <span className="font-mono text-xs text-[#1E90FF]/85 tracking-widest">
+                          SCROLL TO BEGIN
                         </span>
-                      </button>
+                        <span className="animate-bounce text-3xl text-[#1E90FF]">
+                          ↓
+                        </span>
+                      </div>
                     </motion.div>
-                    {/* <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 1.06 }}
-                      className="mt-5 font-mono text-[10px] tracking-[0.24em] text-cyan-300/45"
-                    >
-                      ♪ SOUND RECOMMENDED
-                    </motion.div> */}
                   </motion.div>
                 </div>
               </motion.div>
@@ -459,10 +484,11 @@ const Index = () => {
                       {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
                         <div
                           key={i}
-                          className={`h-1 rounded-full transition-all duration-500 ${i <= currentStep
-                            ? "bg-[#1E90FF] w-6"
-                            : "bg-[#82A0C2]/30 w-2"
-                            }`}
+                          className={`h-1 rounded-full transition-all duration-500 ${
+                            i <= currentStep
+                              ? "bg-[#1E90FF] w-6"
+                              : "bg-[#82A0C2]/30 w-2"
+                          }`}
                         />
                       ))}
                     </div>
@@ -471,9 +497,11 @@ const Index = () => {
                       <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-[#5B7A99]">
                         <div className="relative flex h-8 w-8 items-center justify-center rounded-full border border-blue-300/45 bg-blue-400/10 shadow-[0_0_22px_rgba(30,144,255,0.2)]">
                           <span className="absolute inset-0 rounded-full border border-blue-200/45 animate-ping" />
-                          <span className="relative text-[11px] text-[#1E90FF] animate-bounce">↓</span>
+                          <span className="relative text-[11px] text-[#1E90FF] animate-bounce">
+                            ↓
+                          </span>
                         </div>
-                        <span className="text-[#1E90FF]">SCROLL DOWN</span>
+                        <span className="text-[#1E90FF]">SCROLL</span>
                       </div>
                     )}
                   </div>
@@ -533,15 +561,17 @@ const Index = () => {
                   </span>
                 </div>
                 <div className="hidden gap-8 md:flex">
-                  {["products", "services", "team", "contact"].map((section) => (
-                    <a
-                      key={section}
-                      href={`#${section}`}
-                      className="font-sans font-semibold text-[13px] tracking-widest text-black transition-colors hover:text-cyan-700"
-                    >
-                      {section.toUpperCase()}
-                    </a>
-                  ))}
+                  {["products", "services", "team", "contact"].map(
+                    (section) => (
+                      <a
+                        key={section}
+                        href={`#${section}`}
+                        className="font-sans font-semibold text-[13px] tracking-widest text-black transition-colors hover:text-cyan-700"
+                      >
+                        {section.toUpperCase()}
+                      </a>
+                    ),
+                  )}
                 </div>
                 <a
                   href="#contact"
