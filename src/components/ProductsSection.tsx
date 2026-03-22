@@ -172,7 +172,7 @@ const ProductsSection = () => {
           }}
         >
           <motion.div
-            className="relative rounded-2xl border border-cyan-500/35 bg-gradient-to-br from-white/95 via-cyan-50/80 to-slate-100/90 p-6 md:p-8 mb-6 md:mb-8 overflow-hidden shadow-[0_22px_70px_rgba(8,145,178,0.16)] glow-border-breathe"
+            className="relative rounded-2xl border border-blue-200/50 bg-white/60 backdrop-blur-md p-6 md:p-8 mb-6 md:mb-8 overflow-hidden shadow-[0_8px_32px_rgba(30,144,255,0.1)] glow-border-breathe"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={ecosystemInView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -213,9 +213,9 @@ const ProductsSection = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={ecosystemInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.3 + i * 0.1 }}
-                className="group relative rounded-2xl border border-cyan-500/25 bg-gradient-to-br from-white/90 via-cyan-50/70 to-slate-100/80 p-5 md:p-6 backdrop-blur-[2px] shadow-[0_14px_42px_rgba(15,23,42,0.08)] hover:shadow-[0_20px_56px_rgba(8,145,178,0.16)] transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl border border-blue-200/40 bg-white/60 p-5 md:p-6 backdrop-blur-md shadow-[0_8px_24px_rgba(30,144,255,0.08)] hover:shadow-[0_12px_36px_rgba(30,144,255,0.15)] transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(120%_90%_at_10%_0%,rgba(34,211,238,0.15),transparent_55%)]" />
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-[radial-gradient(120%_90%_at_10%_0%,rgba(30,144,255,0.1),transparent_55%)]" />
                 <div className="relative z-10">
                   <p className="font-mono text-[10px] tracking-[0.28em] text-cyan-700/90 uppercase mb-3">
                     {node.tag}

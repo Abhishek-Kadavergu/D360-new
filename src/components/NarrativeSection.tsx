@@ -68,26 +68,26 @@ const NarrativeSection = ({ step, currentStep }: NarrativeSectionProps) => {
     >
       <div className="w-full">
         {/* Step counter */}
-        <div className="mb-4 font-mono text-[10px] tracking-widest text-cyan-400/60 flex items-center gap-3">
-          <span className="text-cyan-400 font-bold text-sm">
+        <div className="mb-4 font-mono text-[10px] tracking-widest text-[#1E90FF]/80 flex items-center gap-3">
+          <span className="text-[#1E90FF] font-bold text-sm">
             {String(step + 1).padStart(2, "0")}
           </span>
-          <span className="w-8 h-px bg-cyan-400/30 inline-block" />
-          <span className="text-blue-300/50">{data.subtitle}</span>
+          <span className="w-8 h-px bg-[#1E90FF]/30 inline-block" />
+          <span className="text-[#5B7A99]">{data.subtitle}</span>
         </div>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-4xl lg:text-5xl mb-4 text-white font-heading leading-none">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl mb-4 text-[#1A2E40] font-heading leading-none">
           {data.title}
         </h2>
 
         {/* Body */}
-        <p className="font-body text-lg leading-relaxed text-blue-200/50 max-w-[420px] mb-6">
+        <p className="font-body text-lg leading-relaxed text-[#2C4A6B] max-w-[420px] mb-6">
           {data.body}
         </p>
 
         {/* Code tag */}
-        <div className="font-mono text-[11px] text-cyan-400/30">
+        <div className="font-mono text-[11px] text-[#5B7A99]/80">
           {data.tag}
         </div>
 

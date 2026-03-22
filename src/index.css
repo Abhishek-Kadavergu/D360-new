@@ -510,7 +510,7 @@ html {
 
 /* Light theme — content below agent */
 .landing-sections-light {
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 25%, #f1f5f9 70%, #e2e8f0 100%);
+  background: linear-gradient(180deg, #EAF4FF 0%, #D6EBFF 40%, #E0F0FF 70%, #F5FAFF 100%);
 }
 
 .landing-sections-light::before {
