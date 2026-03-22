@@ -180,7 +180,10 @@ const Index = () => {
       }, 700);
     };
 
-    window.addEventListener("wheel", onSplashWheel, { passive: false, capture: true });
+    window.addEventListener("wheel", onSplashWheel, {
+      passive: false,
+      capture: true,
+    });
     return () => {
       window.removeEventListener("wheel", onSplashWheel, true);
     };
