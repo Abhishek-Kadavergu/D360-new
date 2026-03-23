@@ -329,7 +329,7 @@ const Index = () => {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.45, delay: 0.9 }}
                     >
-                      <div className="flex flex-col items-center gap-2 select-none">
+                      <div className="flex flex-col mt-32 items-center gap-2 select-none">
                         <span className="font-mono text-xs text-[#1E90FF]/85 tracking-widest">
                           SCROLL TO BEGIN
                         </span>

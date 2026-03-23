@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useCallback, useEffect, useState, type MouseEvent } from "react";
 import d360Logo from "@/assets/d360-logo-bg.png";
-import piazzaLogo from "@/assets/piazza-logo-black.png";
+import piazzaLogo from "@/assets/pcg-logo1.avif";
 
 interface IgnitionRevealProps {
   visible: boolean;
@@ -122,12 +122,12 @@ const IgnitionReveal = ({ visible }: IgnitionRevealProps) => {
               <img
                 src={piazzaLogo}
                 alt="Piazza Consulting Group"
-                className="mx-auto h-16 md:h-20 w-auto rounded-xl shadow-sm"
+                className="mx-auto h-16 md:h-16 w-auto rounded-xl shadow-sm"
               />
             </motion.div>
           )}
 
-          {phase >= 5 && (
+          {/* {phase >= 5 && (
             <motion.a
               href="#contact"
               initial={{ opacity: 0, y: 14, scale: 0.96 }}
@@ -138,7 +138,7 @@ const IgnitionReveal = ({ visible }: IgnitionRevealProps) => {
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
               <span className="relative z-10">ENTER PLATFORM</span>
             </motion.a>
-          )}
+          )} */}
           {phase >= 2 && (
             <div className="mt-10 flex justify-center">
               <div className="h-px w-56 bg-gradient-to-r from-transparent via-[#1E90FF]/40 to-transparent" />
