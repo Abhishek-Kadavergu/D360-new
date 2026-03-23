@@ -382,16 +382,16 @@ const ArchitectureSVG = ({ progress, ignited, fitContain = false }: Architecture
 
     // Title block
     els.push(
-      <g key="tblock" opacity={p > 0 ? 0.8 : 0.4}>
-        <rect x={700} y={795} width={280} height={38} fill="none" stroke={dimBlue} strokeWidth={1} />
-        <line x1={820} y1={795} x2={820} y2={833} stroke={dimBlue} strokeWidth={1} />
-        <text x={715} y={811} fill={textSub} fontSize="13" fontFamily="monospace" fontWeight="800">PROJECT</text>
-        <text x={715} y={825} fill={textMain} fontSize="16" fontFamily="monospace" fontWeight="900">D360 AI PIPELINE</text>
-        <text x={835} y={811} fill={textSub} fontSize="13" fontFamily="monospace" fontWeight="800">STATUS</text>
-        <text x={835} y={825} fill={textMain} fontSize="16" fontFamily="monospace" fontWeight="900">
-          {ignited ? "● ONLINE" : `BUILD ${Math.round(p * 100)}%`}
-        </text>
-      </g>
+      // <g key="tblock" opacity={p > 0 ? 0.8 : 0.4}>
+      //   <rect x={700} y={795} width={280} height={38} fill="none" stroke={dimBlue} strokeWidth={1} />
+      //   <line x1={820} y1={795} x2={820} y2={833} stroke={dimBlue} strokeWidth={1} />
+      //   <text x={715} y={811} fill={textSub} fontSize="13" fontFamily="monospace" fontWeight="800">PROJECT</text>
+      //   <text x={715} y={825} fill={textMain} fontSize="16" fontFamily="monospace" fontWeight="900">D360 AI PIPELINE</text>
+      //   <text x={835} y={811} fill={textSub} fontSize="13" fontFamily="monospace" fontWeight="800">STATUS</text>
+      //   <text x={835} y={825} fill={textMain} fontSize="16" fontFamily="monospace" fontWeight="900">
+      //     {ignited ? "● ONLINE" : `BUILD ${Math.round(p * 100)}%`}
+      //   </text>
+      // </g>
     );
 
     return els;

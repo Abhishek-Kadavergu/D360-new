@@ -24,7 +24,7 @@ import ContactSection from "@/components/ContactSection";
 import LandingHero from "@/components/LandingHero";
 import ScrollProgressLine from "@/components/ScrollProgressLine";
 import { soundEngine } from "@/lib/soundEngine";
-import piazzaLogo from "@/assets/piazza-logo-black.png";
+import piazzaLogo from "@/assets/pcg-logo1.avif";
 import d360Logo from "@/assets/d360-logo-bg.png";
 
 const TOTAL_STEPS = NARRATIVE_STEPS.length;
@@ -286,7 +286,8 @@ const Index = () => {
                       <img
                         src={piazzaLogo}
                         alt="Piazza Consulting Group"
-                        className="h-24 rounded-2xl shadow-[0_0_60px_rgba(0,255,255,0.15)] md:h-32 lg:h-36"
+                        className="h-22 rounded-2xl shadow-[0_0_60px_rgba(0,255,255,0.15)] md:h-22 lg:h-22 opacity-90"
+                        // style={{ filter: 'hue-rotate(90deg) brightness(1.2) saturate(0.8)' }}
                       />
                     </motion.div>
                     <motion.p
