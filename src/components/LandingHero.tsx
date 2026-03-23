@@ -108,9 +108,9 @@ function LandingHero({
           </p> */}
         </motion.div>
 
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
+        <div className="grid grid-cols-1 items-center gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
           <motion.div
-            className="flex mt-6 justify-start lg:justify-end lg:pr-1 max-w-[540px] h-[340px] lg:ml-0 ml-4"
+            className="flex mt-0 justify-start lg:justify-end lg:pr-1 max-w-[540px] h-[340px] lg:ml-0 ml-4"
             style={{
               x: reduceMotion ? 0 : leftX,
               y: reduceMotion ? 0 : leftY,
@@ -129,7 +129,7 @@ function LandingHero({
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.25 }}
-            className="relative mx-auto flex w-full max-w-[540px] h-[340px] items-center justify-center lg:h-[210px] lg:max-w-[150px]"
+            className="relative mx-auto flex w-full max-w-[540px] h-[280px] items-center justify-center lg:h-[210px] lg:max-w-[150px] my-0"
             aria-hidden
           >
             <div
@@ -254,7 +254,7 @@ function LandingHero({
             {/* Vertical arrow for mobile */}
             <svg
               viewBox="0 0 220 400"
-              className="relative z-[1] h-[200px] w-[96px] lg:hidden"
+              className="relative z-[1] h-[120px] w-[96px] lg:hidden"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
