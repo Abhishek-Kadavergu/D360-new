@@ -10,8 +10,10 @@ import { HeroOrganicFrame } from "@/components/HeroOrganicFrame";
 import leftImage from "@/assets/left-image.png";
 import rightImage from "@/assets/right-image.png";
 
-const ARROW_PATH =
+const ARROW_PATH_HORIZONTAL =
   "M 24 118 C 92 28 168 196 200 110 C 232 24 308 192 376 102";
+const ARROW_PATH_VERTICAL =
+  "M 110 24 C 28 92 196 168 110 200 C 24 232 192 308 102 376";
 
 function LandingHero({
   onWheel,
@@ -106,9 +108,9 @@ function LandingHero({
           </p> */}
         </motion.div>
 
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(96px,150px)_minmax(0,1fr)] lg:gap-3 xl:gap-6">
           <motion.div
-            className="flex mt-6 justify-center lg:justify-end lg:pr-1 max-w-[540px] h-[340px]"
+            className="flex mt-6 justify-start lg:justify-end lg:pr-1 max-w-[540px] h-[340px] lg:ml-0 ml-4"
             style={{
               x: reduceMotion ? 0 : leftX,
               y: reduceMotion ? 0 : leftY,
@@ -127,15 +129,16 @@ function LandingHero({
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.25 }}
-            className="relative mx-auto flex w-full  max-w-[540px] h-[340px] items-center justify-center lg:h-[210px] lg:max-w-[150px]"
+            className="relative mx-auto flex w-full max-w-[540px] h-[340px] items-center justify-center lg:h-[210px] lg:max-w-[150px]"
             aria-hidden
           >
             <div
               className={`absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/28 blur-[44px] ${reduceMotion ? "" : "motion-safe:animate-pulse"}`}
             />
+            {/* Horizontal arrow for desktop */}
             <svg
               viewBox="0 0 400 220"
-              className="relative z-[1] h-[96px] w-full lg:h-[195px]"
+              className="relative z-[1] h-[96px] w-full lg:h-[195px] hidden lg:block"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -177,7 +180,7 @@ function LandingHero({
                 </marker>
               </defs>
               <path
-                d={ARROW_PATH}
+                d={ARROW_PATH_HORIZONTAL}
                 stroke="url(#lhArrowGrad)"
                 strokeWidth={13}
                 strokeLinecap="round"
@@ -186,7 +189,7 @@ function LandingHero({
                 fill="none"
               />
               <motion.path
-                d={ARROW_PATH}
+                d={ARROW_PATH_HORIZONTAL}
                 stroke="url(#lhArrowGrad)"
                 strokeWidth={3.2}
                 strokeLinecap="round"
@@ -199,7 +202,7 @@ function LandingHero({
                 transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
-                d={ARROW_PATH}
+                d={ARROW_PATH_HORIZONTAL}
                 stroke="url(#lhArrowGrad)"
                 strokeWidth={2.2}
                 strokeLinecap="round"
@@ -224,7 +227,7 @@ function LandingHero({
                       dur="3.1s"
                       repeatCount="indefinite"
                       rotate="auto"
-                      path={ARROW_PATH}
+                      path={ARROW_PATH_HORIZONTAL}
                     />
                   </circle>
                   <circle r="2.5" fill="white" opacity={0.95}>
@@ -232,7 +235,7 @@ function LandingHero({
                       dur="3.1s"
                       repeatCount="indefinite"
                       rotate="auto"
-                      path={ARROW_PATH}
+                      path={ARROW_PATH_HORIZONTAL}
                     />
                   </circle>
                   <circle r="3.2" fill="rgb(125 211 252)" opacity={0.55}>
@@ -241,7 +244,123 @@ function LandingHero({
                       begin="1s"
                       repeatCount="indefinite"
                       rotate="auto"
-                      path={ARROW_PATH}
+                      path={ARROW_PATH_HORIZONTAL}
+                    />
+                  </circle>
+                </>
+              )}
+            </svg>
+
+            {/* Vertical arrow for mobile */}
+            <svg
+              viewBox="0 0 220 400"
+              className="relative z-[1] h-[200px] w-[96px] lg:hidden"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient
+                  id="lhArrowGradMobile"
+                  x1="50%"
+                  y1="0%"
+                  x2="50%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stopColor="rgb(148 163 184)" stopOpacity="0.45" />
+                  <stop offset="46%" stopColor="rgb(6 182 212)" stopOpacity="1" />
+                  <stop offset="100%" stopColor="rgb(14 165 233)" stopOpacity="0.92" />
+                </linearGradient>
+                <filter
+                  id="lhArrowGlowMobile"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feGaussianBlur stdDeviation="3.2" result="b" />
+                  <feMerge>
+                    <feMergeNode in="b" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <marker
+                  id="lhArrowHeadMobile"
+                  markerWidth="12"
+                  markerHeight="12"
+                  refX="6"
+                  refY="10"
+                  orient="auto"
+                  markerUnits="strokeWidth"
+                >
+                  <path d="M 0 0 L 6 12 L 12 6 z" fill="rgb(6 182 212)" opacity={0.94} />
+                </marker>
+              </defs>
+              <path
+                d={ARROW_PATH_VERTICAL}
+                stroke="url(#lhArrowGradMobile)"
+                strokeWidth={13}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                opacity={0.18}
+                fill="none"
+              />
+              <motion.path
+                d={ARROW_PATH_VERTICAL}
+                stroke="url(#lhArrowGradMobile)"
+                strokeWidth={3.2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                filter="url(#lhArrowGlowMobile)"
+                markerEnd="url(#lhArrowHeadMobile)"
+                initial={{ pathLength: 0, opacity: 0.65 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              />
+              <motion.path
+                d={ARROW_PATH_VERTICAL}
+                stroke="url(#lhArrowGradMobile)"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                strokeDasharray="10 22"
+                initial={{ strokeDashoffset: 460 }}
+                animate={
+                  reduceMotion ? { strokeDashoffset: 230 } : { strokeDashoffset: 0 }
+                }
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : { duration: 3.8, repeat: Infinity, ease: "linear" }
+                }
+                opacity={0.82}
+              />
+              {!reduceMotion && (
+                <>
+                  <circle r="5" fill="rgb(6 182 212)" opacity={0.9}>
+                    <animateMotion
+                      dur="3.1s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path={ARROW_PATH_VERTICAL}
+                    />
+                  </circle>
+                  <circle r="2.5" fill="white" opacity={0.95}>
+                    <animateMotion
+                      dur="3.1s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path={ARROW_PATH_VERTICAL}
+                    />
+                  </circle>
+                  <circle r="3.2" fill="rgb(125 211 252)" opacity={0.55}>
+                    <animateMotion
+                      dur="3.1s"
+                      begin="1s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path={ARROW_PATH_VERTICAL}
                     />
                   </circle>
                 </>
@@ -250,7 +369,7 @@ function LandingHero({
           </motion.div>
 
           <motion.div
-            className="flex justify-center lg:justify-start lg:pl-1"
+            className="flex justify-end lg:justify-start lg:pl-1 mr-4 lg:mr-0"
             style={{
               x: reduceMotion ? 0 : rightX,
               y: reduceMotion ? 0 : rightY,
