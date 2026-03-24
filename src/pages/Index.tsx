@@ -93,10 +93,9 @@ const Index = () => {
           if (!ignited) {
             setIgnited(true);
             // if (soundEnabled) soundEngine.playIgnition();
-            setTimeout(() => {
-              setNarrativeComplete(true);
-              // if (soundEnabled) soundEngine.playAmbientHum(8);
-            }, 4500);
+            // Skip IgnitionReveal and 3-second animation, go directly to LandingHero
+            setNarrativeComplete(true);
+            // if (soundEnabled) soundEngine.playAmbientHum(8);
           }
           return TOTAL_STEPS;
         }
